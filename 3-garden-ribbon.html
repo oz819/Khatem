@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>دعوة خطوبة كرم وسلمى</title>
+<meta property="og:title" content="دعوة خطوبة كرم وسلمى">
+<meta property="og:description" content="اضغط لفتح الدعوة · دعوة إلكترونية من ختم">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#E9EEE5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Almarai:wght@400;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;min-height:100vh}
+body:not(.is-open){overflow:hidden}
+[hidden]{display:none!important}
+h1,h2,h3,p{margin:0}
+.gate{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;
+  padding:max(24px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));
+  transition:opacity .9s ease,transform .9s ease,visibility 0s linear .9s}
+body.is-open .gate{opacity:0;visibility:hidden;transform:scale(1.04);pointer-events:none}
+.gate button{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+main.inv{max-width:480px;margin:0 auto;padding:max(48px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(40px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
+body.is-open main.inv>*{animation:khRise .9s cubic-bezier(.2,.7,.2,1) both}
+body.is-open main.inv>*:nth-child(2){animation-delay:.08s}
+body.is-open main.inv>*:nth-child(3){animation-delay:.16s}
+body.is-open main.inv>*:nth-child(4){animation-delay:.24s}
+body.is-open main.inv>*:nth-child(n+5){animation-delay:.3s}
+@keyframes khRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:inherit;font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;border:1.5px solid transparent;line-height:1.2}
+.btn svg{width:20px;height:20px;flex:none}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.music{position:fixed;z-index:50;top:max(14px,env(safe-area-inset-top));left:max(14px,env(safe-area-inset-left));width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .6s;padding:0}
+body.is-open .music{opacity:1;pointer-events:auto}
+.music svg{width:22px;height:22px}
+.music .i-off{display:none}
+.music:not(.is-on) .i-on{display:none}
+.music:not(.is-on) .i-off{display:block}
+.cd{display:flex;justify-content:center;gap:10px}
+.cd-u{display:flex;flex-direction:column;align-items:center;min-width:0;flex:1 1 0;max-width:86px}
+.cd-n{font-variant-numeric:tabular-nums;line-height:1.1}
+.cd-l{font-size:13px}
+.rsvp{display:flex;flex-direction:column;gap:16px;text-align:right}
+.field{display:flex;flex-direction:column;gap:6px;border:0;padding:0;margin:0;min-width:0}
+.field>label,.field>legend{font-weight:700;padding:0;font-size:15px}
+.field input,.field select{font:inherit;font-size:16px;min-height:48px;padding:0 14px;border-radius:12px;width:100%;appearance:none;-webkit-appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:18px 21px,24px 21px;background-size:6px 6px;background-repeat:no-repeat}
+.attend{flex-direction:row;flex-wrap:wrap;gap:10px}
+.attend>legend{width:100%;margin-bottom:6px;float:right}
+.opt{flex:1 1 130px;display:flex;position:relative}
+.opt input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.opt span{flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:12px;padding:0 12px;cursor:pointer;text-align:center;font-weight:700;font-size:15px}
+.opt input:focus-visible+span{outline:3px solid currentColor;outline-offset:2px}
+.rsvp-done{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.rsvp-msg{font-weight:700;font-size:19px}
+.rsvp-demo{font-size:14px;opacity:.8;max-width:34ch}
+.link{background:none;border:0;font:inherit;text-decoration:underline;text-underline-offset:4px;cursor:pointer;min-height:44px;padding:0 8px}
+.credit{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:56px;font-size:14px}
+.credit a{color:inherit}
+.credit-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;min-height:44px}
+.credit-link svg{width:26px;height:26px;flex:none}
+.credit-more{min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}}
+/* Design 3 · حديقة: sage paper, hand-drawn branches, a blush ribbon to untie */
+:root{--sage:#E9EEE5;--card:#FBFBF6;--green:#3D5A44;--leaf:#7F9C82;--leaf-l:#B9CCB5;--blush:#C9897C;--blush-d:#A86C60;--ink:#2E3A30;--muted:#5F6B61;--line:#D5DFD2}
+body{background:var(--sage);color:var(--ink);font-family:Almarai,"Noto Sans Arabic",sans-serif;font-size:17px;line-height:1.8}
+.messiri{font-family:"El Messiri","Noto Naskh Arabic",serif}
+
+/* gate: a card tied with a ribbon */
+.gate{background:radial-gradient(100% 70% at 50% 40%,#F4F7F1 0%,var(--sage) 70%,#DCE4D6 100%)}
+.gift{position:relative;width:min(76vw,310px);aspect-ratio:4/5;border:0;padding:0;background:none;cursor:pointer;margin:10px 0}
+.gift-card{position:absolute;inset:0;background:var(--card);border-radius:14px;box-shadow:0 30px 50px -28px rgba(46,58,48,.5);overflow:hidden;
+  display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;padding:0 10% 15%;text-align:left;transition:transform 1s cubic-bezier(.2,.7,.2,1) .7s}
+.gift-card svg.br{position:absolute;width:62%;color:var(--leaf)}
+.gift-card .br-a{top:-1%;left:-8%;transform:rotate(-12deg) scaleY(-1)}
+.gift-card .br-b{bottom:-3%;left:-8%;transform:rotate(15deg)}
+.gift-to{font-size:14px;color:var(--muted)}
+.gift-names{font-family:"El Messiri",serif;font-weight:600;font-size:26px;color:var(--green)}
+.rib{position:absolute;background:linear-gradient(90deg,#B97A6E,var(--blush) 30%,#D9A196 50%,var(--blush) 70%,#B97A6E);transition:transform .7s cubic-bezier(.6,0,.3,1) .25s,opacity .5s ease .45s}
+.rib-v{top:-2%;bottom:-2%;right:22%;width:30px;margin-right:-15px;transform-origin:50% 0}
+.rib-h{left:-2%;right:-2%;top:30%;height:30px;margin-top:-15px;background:linear-gradient(180deg,#B97A6E,var(--blush) 30%,#D9A196 50%,var(--blush) 70%,#B97A6E);transform-origin:100% 50%}
+.bow{position:absolute;left:78%;top:30%;width:150px;height:90px;transform:translate(-50%,-50%);transition:transform .55s ease,opacity .45s ease}
+.loop{position:absolute;top:8px;width:66px;height:46px;border:13px solid var(--blush);border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.loop.l1{right:6px;transform:rotate(-24deg)}
+.loop.l2{left:6px;transform:rotate(24deg)}
+.tail{position:absolute;top:44px;width:22px;height:52px;background:var(--blush-d);clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%)}
+.tail.t1{right:52px;transform:rotate(22deg)}
+.tail.t2{left:52px;transform:rotate(-22deg)}
+.knot{position:absolute;left:50%;top:26px;width:30px;height:34px;margin-left:-15px;background:#B97A6E;border-radius:10px;box-shadow:inset 0 -4px 0 rgba(0,0,0,.08)}
+.gift::after{content:"";position:absolute;left:78%;top:30%;width:170px;height:170px;margin:-85px 0 0 -85px;border-radius:50%;border:2px solid rgba(201,137,124,.45);animation:bowPulse 2.4s ease-out infinite;pointer-events:none}
+@keyframes bowPulse{from{transform:scale(.6);opacity:1}to{transform:scale(1.15);opacity:0}}
+.gate-hint{font-size:15px;color:var(--muted)}
+.is-opening .gift::after{animation:none;opacity:0}
+.is-opening .bow{transform:translate(-50%,-50%) scale(.2) rotate(40deg);opacity:0}
+.is-opening .rib-v{transform:scaleY(0)}
+.is-opening .rib-h{transform:scaleX(0)}
+.is-opening .gift-card{transform:scale(1.06) translateY(-8px)}
+
+/* invitation */
+.hero{text-align:center;padding-top:6px}
+.hero-branch{display:block;width:min(78%,300px);margin:0 auto;color:var(--leaf)}
+.lead{margin-top:10px;font-size:17px;color:var(--muted)}
+.occasion{font-family:"El Messiri",serif;font-weight:500;font-size:20px;color:var(--blush-d);margin-top:4px}
+.names{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 16px;margin:14px 0 4px;color:var(--green);line-height:1.2;font-weight:700}
+.names span{font-size:clamp(54px,16vw,76px)}
+.names .amp{font-size:34px;color:var(--blush);font-weight:500}
+.dateline{margin:22px auto 0;display:flex;align-items:stretch;justify-content:center;background:var(--card);border:1px solid var(--line);border-radius:999px;max-width:420px;overflow:hidden}
+.dateline div{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px;line-height:1.35}
+.dateline div+div{border-right:1px solid var(--line)}
+.dateline small{font-size:12px;color:var(--muted)}
+.dateline b{font-family:"El Messiri",serif;font-size:18px;color:var(--green);font-weight:600}
+.leaf-div{display:block;width:90px;height:22px;margin:40px auto 0;color:var(--leaf)}
+.block{margin-top:14px;display:flex;flex-direction:column;gap:16px;text-align:center}
+.label{font-family:"El Messiri",serif;font-weight:600;font-size:24px;color:var(--green)}
+.cd{gap:8px}
+.cd-u{aspect-ratio:1;justify-content:center;border-radius:50%;background:var(--card);border:1.5px solid var(--leaf-l);max-width:78px}
+.cd-n{font-family:"El Messiri",serif;font-weight:700;font-size:26px;color:var(--green)}
+.cd-l{font-size:12px;color:var(--muted)}
+.cd-done{font-family:"El Messiri",serif;font-size:26px;color:var(--green)}
+.venue-name{font-family:"El Messiri",serif;font-size:28px;font-weight:600;color:var(--green);line-height:1.4}
+.venue-addr{color:var(--muted);margin-top:-10px}
+.btn-solid{background:var(--green);color:#F6F8F3}
+.btn-solid:hover{background:#2F4735}
+.btn-line{background:transparent;color:var(--green);border-color:var(--green)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 18px}
+.field input,.field select{background:var(--sage);border:1px solid var(--line);color:var(--ink)}
+.field input:focus,.field select:focus{border-color:var(--green);outline:none;box-shadow:0 0 0 3px rgba(61,90,68,.15)}
+.opt span{border:1px solid var(--line);background:var(--sage);color:var(--ink)}
+.opt input:checked+span{background:var(--blush);border-color:var(--blush);color:#fff}
+.rsvp .btn{width:100%}
+.rsvp-msg{color:var(--green)}
+.link{color:var(--green)}
+.closing{margin-top:44px;text-align:center;font-family:"El Messiri",serif;font-size:clamp(24px,7vw,30px);color:var(--blush-d);font-weight:600}
+.music{background:var(--card);color:var(--green);border:1px solid var(--line)}
+.credit{color:var(--muted)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="lf" d="M0 0 C5 -7 15 -8 22 0 C15 8 5 7 0 0Z"/>
+    <symbol id="branch" viewBox="0 0 240 90">
+      <path d="M8 70 C60 40 120 82 232 34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <g fill="#DCE6D8" stroke="currentColor" stroke-width="1.3">
+        <use href="#lf" transform="translate(40 55) rotate(-70)"/>
+        <use href="#lf" transform="translate(52 52) rotate(40)"/>
+        <use href="#lf" transform="translate(86 58) rotate(-95)"/>
+        <use href="#lf" transform="translate(100 62) rotate(25)"/>
+        <use href="#lf" transform="translate(138 62) rotate(-110)"/>
+        <use href="#lf" transform="translate(150 60) rotate(10)"/>
+        <use href="#lf" transform="translate(186 48) rotate(-120)"/>
+        <use href="#lf" transform="translate(198 44) rotate(-5)"/>
+        <use href="#lf" transform="translate(226 36) rotate(-30)"/>
+      </g>
+      <g fill="#C9897C"><circle cx="70" cy="50" r="3.4"/><circle cx="76" cy="46" r="2.6"/><circle cx="168" cy="50" r="3.4"/><circle cx="122" cy="74" r="2.8"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="gate" data-gate>
+  <button class="gift" type="button" aria-label="فك الشريطة وافتح الدعوة">
+    <span class="gift-card" aria-hidden="true">
+      <svg class="br br-a" viewBox="0 0 240 90"><use href="#branch"/></svg>
+      <svg class="br br-b" viewBox="0 0 240 90"><use href="#branch"/></svg>
+      <span class="gift-to">إلى أحبّتنا</span>
+      <span class="gift-names">كرم و سلمى</span>
+    </span>
+    <span class="rib rib-v" aria-hidden="true"></span>
+    <span class="rib rib-h" aria-hidden="true"></span>
+    <span class="bow" aria-hidden="true"><span class="tail t1"></span><span class="tail t2"></span><span class="loop l1"></span><span class="loop l2"></span><span class="knot"></span></span>
+  </button>
+  <p class="gate-hint">اضغط على الشريطة</p>
+</div>
+
+<main class="inv">
+  <header class="hero">
+    <svg class="hero-branch" viewBox="0 0 240 90" aria-hidden="true"><use href="#branch"/></svg>
+    <p class="lead">بفرح وامتنان نشارككم أجمل خبر</p>
+    <p class="occasion">حفل خطوبة</p>
+    <h1 class="names messiri"><span>كرم</span><span class="amp" aria-label="و">&amp;</span><span>سلمى</span></h1>
+    <div class="dateline" aria-label="موعد الحفل">
+      <div><small>اليوم</small><b>الجمعة</b></div>
+      <div><small>التاريخ</small><b>11 كانون الأول</b></div>
+      <div><small>الساعة</small><b>6:00 م</b></div>
+    </div>
+  </header>
+
+  <svg class="leaf-div" viewBox="0 0 90 22" aria-hidden="true"><path d="M4 11h30M56 11h30" stroke="currentColor" stroke-width="1"/><use href="#lf" transform="translate(34 11) scale(.9)" fill="#DCE6D8" stroke="currentColor" stroke-width="1.2"/><use href="#lf" transform="translate(56 11) rotate(180) scale(.9)" fill="#DCE6D8" stroke="currentColor" stroke-width="1.2"/></svg>
+  <section class="block">
+    <h2 class="label">العدّ التنازلي</h2>
+    <div class="cd" data-countdown role="timer" aria-label="الوقت المتبقي للموعد">
+      <div class="cd-u"><span class="cd-n" data-cd="d">0</span><span class="cd-l">يوم</span></div>
+      <div class="cd-u"><span class="cd-n" data-cd="h">00</span><span class="cd-l">ساعة</span></div>
+      <div class="cd-u"><span class="cd-n" data-cd="m">00</span><span class="cd-l">دقيقة</span></div>
+      <div class="cd-u"><span class="cd-n" data-cd="s">00</span><span class="cd-l">ثانية</span></div>
+    </div>
+    <p class="cd-done" data-cd-done hidden>اليوم يوم الفرح</p>
+  </section>
+
+  <svg class="leaf-div" viewBox="0 0 90 22" aria-hidden="true"><path d="M4 11h30M56 11h30" stroke="currentColor" stroke-width="1"/><use href="#lf" transform="translate(34 11) scale(.9)" fill="#DCE6D8" stroke="currentColor" stroke-width="1.2"/><use href="#lf" transform="translate(56 11) rotate(180) scale(.9)" fill="#DCE6D8" stroke="currentColor" stroke-width="1.2"/></svg>
+  <section class="block">
+    <h2 class="label">وين الحفلة؟</h2>
+    <p class="venue-name">حديقة بيت العائلة</p>
+    <p class="venue-addr">عمّان</p>
+    <div class="actions">
+      <a class="btn btn-solid" data-map href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>افتح اللوكيشن</a>
+      <a class="btn btn-line" data-calendar href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v4M10 15h4"/></svg>أضف للتقويم</a>
+    </div>
+  </section>
+
+  <svg class="leaf-div" viewBox="0 0 90 22" aria-hidden="true"><path d="M4 11h30M56 11h30" stroke="currentColor" stroke-width="1"/><use href="#lf" transform="translate(34 11) scale(.9)" fill="#DCE6D8" stroke="currentColor" stroke-width="1.2"/><use href="#lf" transform="translate(56 11) rotate(180) scale(.9)" fill="#DCE6D8" stroke="currentColor" stroke-width="1.2"/></svg>
+  <section class="block">
+    <h2 class="label">بتشرّفونا؟</h2>
+    <div class="card">
+      <form class="rsvp" data-rsvp novalidate>
+      <div class="field"><label for="r-name">الاسم</label><input id="r-name" name="name" autocomplete="name" placeholder="اكتب اسمك"></div>
+      <fieldset class="field attend"><legend>رح تشرّفونا؟</legend>
+        <label class="opt"><input type="radio" name="attend" value="yes" checked><span>إن شاء الله بنحضر</span></label>
+        <label class="opt"><input type="radio" name="attend" value="no"><span>بنعتذر</span></label>
+      </fieldset>
+      <div class="field" data-count-wrap><label for="r-count">عدد الأشخاص</label>
+        <select id="r-count" name="count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+      </div>
+      <button type="submit" class="btn btn-solid">تأكيد الرد</button>
+    </form>
+    <div class="rsvp-done" data-rsvp-done hidden>
+      <p class="rsvp-msg" data-rsvp-msg></p>
+      <a class="btn btn-solid" data-rsvp-wa href="#" hidden>ابعث ردّك عالواتساب</a>
+      <p class="rsvp-demo" data-rsvp-demo hidden>هاي دعوة نموذج. بالدعوة الحقيقية بيوصل ردّك لأصحاب الدعوة عالواتساب.</p>
+      <button type="button" class="link" data-rsvp-again>تعديل الرد</button>
+    </div>
+    </div>
+  </section>
+
+  <p class="closing">فرحتنا بتكمل فيكم</p>
+  <footer class="credit">
+    <a class="credit-link" href="https://instagram.com/khatm.jo" target="_blank" rel="noopener">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><path d="M186.9 100.0 C187.0 106.8 184.1 113.5 182.9 120.4 C181.7 127.4 182.8 135.8 179.6 141.8 C176.3 147.7 168.2 150.9 163.4 156.1 C158.5 161.4 155.5 167.9 150.5 173.1 C145.4 178.3 139.8 185.4 133.1 187.2 C126.4 189.0 117.5 183.8 110.2 183.9 C102.9 184.0 96.0 188.8 89.3 187.9 C82.6 187.1 76.6 181.5 70.1 178.9 C63.6 176.3 55.6 176.1 50.1 172.3 C44.5 168.6 40.8 161.6 36.7 156.1 C32.5 150.6 28.6 145.3 24.9 139.4 C21.2 133.6 17.5 127.6 14.7 121.0 C12.0 114.4 8.1 106.9 8.6 100.0 C9.0 93.1 14.8 86.3 17.4 79.6 C19.9 73.0 21.3 66.5 23.8 60.0 C26.4 53.5 29.5 47.4 32.9 40.6 C36.3 33.7 38.1 22.9 44.0 18.9 C49.9 14.9 60.8 17.6 68.4 16.6 C75.9 15.6 82.3 14.5 89.4 13.1 C96.6 11.6 104.4 6.6 111.2 7.9 C117.9 9.2 123.1 18.3 129.9 21.1 C136.8 23.8 146.3 20.9 152.1 24.5 C157.9 28.1 160.9 36.6 164.8 42.6 C168.7 48.5 172.6 54.2 175.5 60.4 C178.5 66.5 180.7 73.0 182.6 79.6 C184.5 86.3 186.9 93.2 186.9 100.0Z" fill="#6E1A27"/><circle cx="100" cy="100" r="66" fill="none" stroke="#3F0C16" stroke-width="5" opacity=".5"/></svg>
+      <span>دعوة إلكترونية من <b>ختم</b> · <bdi dir="ltr">@khatm.jo</bdi></span>
+    </a>
+    <a class="credit-more" data-catalog href="./">شوف باقي النماذج</a>
+  </footer>
+</main>
+<button class="music" type="button" data-music aria-pressed="false" aria-label="تشغيل الموسيقى"><svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button>
+
+<script>
+/* Khatm invitation engine: countdown, map + calendar links, RSVP, generated music, open sequence. */
+(function () {
+  'use strict';
+  var K = (window.Khatm = {});
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var AR = '٠١٢٣٤٥٦٧٨٩';
+  K.reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  K.num = function (n, pad) {
+    var s = String(n);
+    if (pad) while (s.length < pad) s = '0' + s;
+    return K.cfg && K.cfg.digits === 'arab' ? s.replace(/\d/g, function (d) { return AR[d]; }) : s;
+  };
+
+  K.init = function (cfg) {
+    K.cfg = cfg;
+    countdown();
+    links();
+    rsvp();
+    musicToggle();
+    var cat = $('[data-catalog]');
+    if (cat) { if (cfg.catalogUrl) cat.href = cfg.catalogUrl; else cat.hidden = true; }
+  };
+
+  /* ---------- countdown ---------- */
+  function countdown() {
+    var box = $('[data-countdown]');
+    if (!box) return;
+    var target = new Date(K.cfg.date).getTime();
+    var done = $('[data-cd-done]');
+    var els = {};
+    ['d', 'h', 'm', 's'].forEach(function (k) { els[k] = $('[data-cd="' + k + '"]', box); });
+    function tick() {
+      var ms = target - Date.now();
+      if (ms <= 0) { box.hidden = true; if (done) done.hidden = false; return; }
+      var d = Math.floor(ms / 864e5); ms -= d * 864e5;
+      var h = Math.floor(ms / 36e5); ms -= h * 36e5;
+      var m = Math.floor(ms / 6e4); ms -= m * 6e4;
+      var s = Math.floor(ms / 1e3);
+      els.d.textContent = K.num(d);
+      els.h.textContent = K.num(h, 2);
+      els.m.textContent = K.num(m, 2);
+      els.s.textContent = K.num(s, 2);
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  /* ---------- map + calendar ---------- */
+  function stamp(t) { return new Date(t).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); }
+  function links() {
+    var c = K.cfg;
+    var map = c.mapUrl || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(c.mapQuery || c.venue));
+    $$('[data-map]').forEach(function (a) { a.href = map; a.target = '_blank'; a.rel = 'noopener'; });
+    var start = new Date(c.date).getTime();
+    var end = start + (c.hours || 4) * 36e5;
+    var cal = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text=' + encodeURIComponent(c.title) +
+      '&dates=' + stamp(start) + '/' + stamp(end) +
+      '&location=' + encodeURIComponent(c.venue) +
+      '&details=' + encodeURIComponent(c.calendarNote || '');
+    $$('[data-calendar]').forEach(function (a) { a.href = cal; a.target = '_blank'; a.rel = 'noopener'; });
+  }
+
+  /* ---------- RSVP ---------- */
+  function rsvp() {
+    var f = $('[data-rsvp]');
+    if (!f) return;
+    var done = $('[data-rsvp-done]');
+    var msgEl = $('[data-rsvp-msg]');
+    var wa = $('[data-rsvp-wa]');
+    var demo = $('[data-rsvp-demo]');
+    var again = $('[data-rsvp-again]');
+    var count = f.querySelector('[name="count"]');
+    var countWrap = $('[data-count-wrap]', f);
+    if (count) $$('option', count).forEach(function (o) { o.textContent = K.num(o.value); });
+    $$('[name="attend"]', f).forEach(function (r) {
+      r.addEventListener('change', function () {
+        if (countWrap) countWrap.hidden = (f.querySelector('[name="attend"]:checked') || {}).value === 'no';
+      });
+    });
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nameEl = f.querySelector('[name="name"]');
+      var name = nameEl.value.trim();
+      if (!name) { nameEl.focus(); nameEl.setAttribute('aria-invalid', 'true'); return; }
+      nameEl.removeAttribute('aria-invalid');
+      var going = (f.querySelector('[name="attend"]:checked') || {}).value !== 'no';
+      var n = count ? parseInt(count.value, 10) || 1 : 1;
+      var text = 'السلام عليكم، أنا ' + name + '. ' +
+        (going ? 'بأكّد حضوري' + (n > 1 ? ' (' + n + ' أشخاص)' : '') : 'بعتذر عن الحضور') +
+        '، ' + K.cfg.title + '.';
+      msgEl.textContent = going ? 'شكراً يا ' + name + '، بنستناكم.' : 'شكراً يا ' + name + '، الله يسعدك.';
+      if (K.cfg.whatsapp) {
+        wa.href = 'https://wa.me/' + K.cfg.whatsapp + '?text=' + encodeURIComponent(text);
+        wa.target = '_blank'; wa.rel = 'noopener';
+        wa.hidden = false; if (demo) demo.hidden = true;
+      } else {
+        wa.hidden = true; if (demo) demo.hidden = false;
+      }
+      f.hidden = true;
+      done.hidden = false;
+      msgEl.setAttribute('tabindex', '-1');
+      msgEl.focus();
+    });
+    if (again) again.addEventListener('click', function () { done.hidden = true; f.hidden = false; f.querySelector('[name="name"]').focus(); });
+  }
+
+  /* ---------- generated music box (no audio files) ---------- */
+  var M = (K.music = { ctx: null, playing: false });
+  function note(f, t, dur, vol, type) {
+    var ctx = M.ctx;
+    var o = ctx.createOscillator(), o2 = ctx.createOscillator();
+    var g = ctx.createGain(), g2 = ctx.createGain();
+    o.type = type || 'sine'; o.frequency.value = f;
+    o2.type = 'sine'; o2.frequency.value = f * 2.005;
+    g2.gain.value = 0.22;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); o2.connect(g2); g2.connect(g); g.connect(M.out);
+    o.start(t); o2.start(t); o.stop(t + dur + 0.05); o2.stop(t + dur + 0.05);
+  }
+  function schedule() {
+    var ctx = M.ctx;
+    if (!ctx || ctx.state !== 'running') return;
+    var m = K.cfg.music || {};
+    var root = m.root || 261.63, bpm = m.bpm || 66;
+    var chords = m.chords || [[0, 4, 7], [-3, 0, 4], [-7, -3, 0], [-5, -1, 2]];
+    var pat = m.pattern || [0, 1, 2, 3, 2, 1];
+    var step = 60 / bpm / 2;
+    while (M.next < ctx.currentTime + 0.45) {
+      var bar = Math.floor(M.step / pat.length) % chords.length;
+      var i = M.step % pat.length;
+      var ch = chords[bar];
+      var tones = [ch[0], ch[1], ch[2], ch[0] + 12];
+      note(root * Math.pow(2, (tones[pat[i]] + 12) / 12), M.next, 1.9, 0.2, m.wave);
+      if (i === 0) note(root * Math.pow(2, (ch[0] - 12) / 12), M.next, 3.4, 0.14, 'triangle');
+      M.next += step;
+      M.step++;
+    }
+  }
+  M.start = function () {
+    if (K.cfg.music === false) return;
+    try {
+      if (!M.ctx) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        var ctx = (M.ctx = new AC());
+        M.out = ctx.createGain(); M.out.gain.value = 0;
+        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3000;
+        var dly = ctx.createDelay(); dly.delayTime.value = 0.34;
+        var fb = ctx.createGain(); fb.gain.value = 0.3;
+        var wet = ctx.createGain(); wet.gain.value = 0.35;
+        M.out.connect(lp); lp.connect(ctx.destination);
+        lp.connect(dly); dly.connect(fb); fb.connect(dly); dly.connect(wet); wet.connect(ctx.destination);
+        M.next = ctx.currentTime + 0.15; M.step = 0;
+        M.timer = setInterval(schedule, 90);
+      }
+      M.ctx.resume();
+      M.out.gain.cancelScheduledValues(M.ctx.currentTime);
+      M.out.gain.setTargetAtTime(0.5, M.ctx.currentTime, 0.6);
+      M.playing = true;
+    } catch (e) { M.playing = false; }
+    syncBtn();
+  };
+  M.stop = function () {
+    if (!M.ctx) return;
+    M.out.gain.setTargetAtTime(0, M.ctx.currentTime, 0.15);
+    M.playing = false;
+    setTimeout(function () { if (!M.playing && M.ctx) M.ctx.suspend(); }, 700);
+    syncBtn();
+  };
+  function syncBtn() {
+    var b = $('[data-music]');
+    if (!b) return;
+    b.setAttribute('aria-pressed', M.playing ? 'true' : 'false');
+    b.setAttribute('aria-label', M.playing ? 'إيقاف الموسيقى' : 'تشغيل الموسيقى');
+    b.classList.toggle('is-on', M.playing);
+  }
+  function musicToggle() {
+    var b = $('[data-music]');
+    if (!b) return;
+    if (K.cfg.music === false) { b.hidden = true; return; }
+    b.addEventListener('click', function () { if (M.playing) M.stop(); else M.start(); });
+    syncBtn();
+  }
+
+  /* ---------- opening ---------- */
+  K.open = function (delay) {
+    var body = document.body;
+    if (body.classList.contains('is-opening')) return;
+    M.start();
+    body.classList.add('is-opening');
+    var gate = $('[data-gate]');
+    if (gate && gate.tagName !== 'BUTTON') { var gb = $('button', gate); if (gb) gb.disabled = true; }
+    setTimeout(function () {
+      body.classList.add('is-open');
+      window.scrollTo(0, 0);
+      if (gate) {
+        gate.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { gate.hidden = true; }, K.reduced ? 0 : 900);
+      }
+      var h = $('main h1');
+      if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+    }, K.reduced ? 0 : (delay || 1400));
+  };
+
+  /* confetti on a full-screen canvas (used by the graduation design) */
+  K.confetti = function (opts) {
+    if (K.reduced) return;
+    opts = opts || {};
+    var cv = document.createElement('canvas');
+    cv.setAttribute('aria-hidden', 'true');
+    cv.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60';
+    document.body.appendChild(cv);
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = cv.width = innerWidth * dpr, H = cv.height = innerHeight * dpr;
+    var ctx = cv.getContext('2d');
+    var colors = opts.colors || ['#D2A44F', '#E07A5F', '#3D8B88', '#F4E3B5', '#1F2A44'];
+    var ox = (opts.x != null ? opts.x : 0.5) * W, oy = (opts.y != null ? opts.y : 0.45) * H;
+    var parts = [];
+    for (var i = 0; i < (opts.count || 160); i++) {
+      var a = Math.random() * Math.PI * 2, sp = (6 + Math.random() * 12) * dpr;
+      parts.push({ x: ox, y: oy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 8 * dpr, r: (4 + Math.random() * 6) * dpr, c: colors[i % colors.length], rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3, life: 0 });
+    }
+    var frames = 0;
+    (function loop() {
+      ctx.clearRect(0, 0, W, H);
+      parts.forEach(function (p) {
+        p.vy += 0.35 * dpr; p.vx *= 0.985; p.vy *= 0.985;
+        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.r, -p.r * 0.4, p.r * 2, p.r * 0.8);
+        ctx.restore();
+      });
+      if (++frames < 220) requestAnimationFrame(loop); else cv.remove();
+    })();
+  };
+})();
+
+/* ===== بيانات الدعوة: عدّل هون ===== */
+Khatm.init({
+  title: 'حفل خطوبة كرم وسلمى',
+  date: '2026-12-11T18:00:00+03:00',
+  hours: 4,
+  venue: 'حديقة بيت العائلة، عمّان',
+  mapQuery: 'Amman, Jordan',
+  digits: 'latn',
+  whatsapp: '',
+  catalogUrl: './',
+  calendarNote: 'دعوة من ختم',
+  music: { root: 293.66, bpm: 72, pattern: [0, 2, 1, 3, 2, 1] }
+});
+document.querySelector('.gift').addEventListener('click', function () { Khatm.open(1700); });
+</script>
+</body>
+</html>

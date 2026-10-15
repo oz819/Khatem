@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>دعوة زفاف سيف وجود</title>
+<meta property="og:title" content="دعوة زفاف سيف وجود">
+<meta property="og:description" content="اضغط لفتح الدعوة · دعوة إلكترونية من ختم">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E1626">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;min-height:100vh}
+body:not(.is-open){overflow:hidden}
+[hidden]{display:none!important}
+h1,h2,h3,p{margin:0}
+.gate{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;
+  padding:max(24px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));
+  transition:opacity .9s ease,transform .9s ease,visibility 0s linear .9s}
+body.is-open .gate{opacity:0;visibility:hidden;transform:scale(1.04);pointer-events:none}
+.gate button{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+main.inv{max-width:480px;margin:0 auto;padding:max(48px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(40px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
+body.is-open main.inv>*{animation:khRise .9s cubic-bezier(.2,.7,.2,1) both}
+body.is-open main.inv>*:nth-child(2){animation-delay:.08s}
+body.is-open main.inv>*:nth-child(3){animation-delay:.16s}
+body.is-open main.inv>*:nth-child(4){animation-delay:.24s}
+body.is-open main.inv>*:nth-child(n+5){animation-delay:.3s}
+@keyframes khRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:inherit;font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;border:1.5px solid transparent;line-height:1.2}
+.btn svg{width:20px;height:20px;flex:none}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.music{position:fixed;z-index:50;top:max(14px,env(safe-area-inset-top));left:max(14px,env(safe-area-inset-left));width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .6s;padding:0}
+body.is-open .music{opacity:1;pointer-events:auto}
+.music svg{width:22px;height:22px}
+.music .i-off{display:none}
+.music:not(.is-on) .i-on{display:none}
+.music:not(.is-on) .i-off{display:block}
+.cd{display:flex;justify-content:center;gap:10px}
+.cd-u{display:flex;flex-direction:column;align-items:center;min-width:0;flex:1 1 0;max-width:86px}
+.cd-n{font-variant-numeric:tabular-nums;line-height:1.1}
+.cd-l{font-size:13px}
+.rsvp{display:flex;flex-direction:column;gap:16px;text-align:right}
+.field{display:flex;flex-direction:column;gap:6px;border:0;padding:0;margin:0;min-width:0}
+.field>label,.field>legend{font-weight:700;padding:0;font-size:15px}
+.field input,.field select{font:inherit;font-size:16px;min-height:48px;padding:0 14px;border-radius:12px;width:100%;appearance:none;-webkit-appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:18px 21px,24px 21px;background-size:6px 6px;background-repeat:no-repeat}
+.attend{flex-direction:row;flex-wrap:wrap;gap:10px}
+.attend>legend{width:100%;margin-bottom:6px;float:right}
+.opt{flex:1 1 130px;display:flex;position:relative}
+.opt input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.opt span{flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:12px;padding:0 12px;cursor:pointer;text-align:center;font-weight:700;font-size:15px}
+.opt input:focus-visible+span{outline:3px solid currentColor;outline-offset:2px}
+.rsvp-done{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.rsvp-msg{font-weight:700;font-size:19px}
+.rsvp-demo{font-size:14px;opacity:.8;max-width:34ch}
+.link{background:none;border:0;font:inherit;text-decoration:underline;text-underline-offset:4px;cursor:pointer;min-height:44px;padding:0 8px}
+.credit{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:56px;font-size:14px}
+.credit a{color:inherit}
+.credit-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;min-height:44px}
+.credit-link svg{width:26px;height:26px;flex:none}
+.credit-more{min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}}
+/* Design 2 · ليلة ذهبية: midnight sky, arched doors with a gold star lattice, Kufi lettering */
+:root{--night:#0E1626;--night-2:#15213A;--night-3:#1C2A47;--gold:#CFAE6B;--gold-l:#EBD6A3;--text:#ECE5D5;--muted:#A9B1C2;--line:rgba(207,174,107,.35)}
+body{background:var(--night);color:var(--text);font-family:"IBM Plex Sans Arabic","Noto Sans Arabic",sans-serif;font-size:17px;line-height:1.75}
+.kufi{font-family:"Reem Kufi","Noto Kufi Arabic",sans-serif}
+.stars,.gate::before{content:"";position:fixed;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(1.3px 1.3px at 12% 18%,#FFF3D6 50%,transparent 52%),
+    radial-gradient(1px 1px at 68% 8%,#FFF3D6 50%,transparent 52%),
+    radial-gradient(1.6px 1.6px at 84% 42%,#F4E2B5 50%,transparent 52%),
+    radial-gradient(1px 1px at 32% 64%,#FFF3D6 50%,transparent 52%),
+    radial-gradient(1.2px 1.2px at 52% 88%,#FFF3D6 50%,transparent 52%),
+    radial-gradient(1px 1px at 92% 76%,#FFF3D6 50%,transparent 52%),
+    radial-gradient(1.4px 1.4px at 6% 92%,#F4E2B5 50%,transparent 52%),
+    radial-gradient(1px 1px at 44% 30%,#FFF3D6 50%,transparent 52%);
+  background-size:260px 260px;opacity:.75}
+.stars{z-index:0;animation:twinkle 6s ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.45}to{opacity:.85}}
+
+/* gate: arched double doors */
+.gate{background:radial-gradient(90% 60% at 50% 45%,var(--night-3) 0%,var(--night) 70%)}
+.gate>*{position:relative}
+.gate-kicker{font-family:"Reem Kufi",sans-serif;font-size:22px;color:var(--gold);letter-spacing:.04em}
+.doorway{position:relative;width:min(70vw,300px);aspect-ratio:2/3;perspective:1100px;border:0;padding:0;background:none;cursor:pointer;margin:18px 0}
+.doorway::before{content:"";position:absolute;inset:-12px -12px 0;border:1.5px solid var(--gold);border-bottom:0;border-radius:50% 50% 0 0/26% 26% 0 0}
+.doorway::after{content:"";position:absolute;left:-30px;right:-30px;bottom:-2px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.glow{position:absolute;inset:0;border-radius:50% 50% 0 0/26% 26% 0 0;background:radial-gradient(70% 55% at 50% 62%,#FFF6DD 0%,#EBCB86 35%,#8C6A35 70%,#1C2A47 100%);box-shadow:0 0 0 rgba(235,203,134,0);transition:box-shadow 1.2s ease .3s}
+.door{position:absolute;top:0;bottom:0;width:50%;background-color:#16233D;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><g fill='none' stroke='%23CFAE6B' stroke-opacity='.42' stroke-width='1'><rect x='11' y='11' width='18' height='18'/><rect x='11' y='11' width='18' height='18' transform='rotate(45 20 20)'/><circle cx='20' cy='20' r='3'/><path d='M0 20h4M36 20h4M20 0v4M20 36v4'/></g></svg>");
+  background-size:40px 40px;border:1.5px solid var(--gold);transition:transform 1.4s cubic-bezier(.6,0,.2,1) .15s;backface-visibility:hidden}
+.door-r{right:0;border-top-right-radius:100% 26%;transform-origin:100% 50%;border-left-width:.75px}
+.door-l{left:0;border-top-left-radius:100% 26%;transform-origin:0 50%;border-right-width:.75px}
+.ring{position:absolute;top:56%;width:20px;height:20px;border:2px solid var(--gold);border-radius:50%;box-shadow:0 0 10px rgba(235,203,134,.35)}
+.door-r .ring{left:12px}
+.door-l .ring{right:12px}
+.gate-hint{font-size:15px;color:var(--muted)}
+.is-opening .door-r{transform:rotateY(-112deg)}
+.is-opening .door-l{transform:rotateY(112deg)}
+.is-opening .glow{box-shadow:0 0 120px 40px rgba(235,203,134,.45)}
+
+/* invitation */
+main.inv{position:relative;z-index:1}
+.arch{border:1px solid var(--line);border-radius:999px 999px 18px 18px/240px 240px 18px 18px;padding:70px 22px 36px;text-align:center;
+  background:linear-gradient(180deg,rgba(28,42,71,.85),rgba(14,22,38,.6));position:relative}
+.arch::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);border-radius:inherit;pointer-events:none;opacity:.6}
+.star8{display:block;margin:0 auto 14px;width:34px;height:34px;color:var(--gold)}
+.kicker{font-size:14px;color:var(--muted)}
+.lead{margin-top:16px;font-size:18px;color:var(--text);opacity:.9}
+.names{display:flex;flex-direction:column;align-items:center;gap:0;margin:20px 0 10px;line-height:1.15;font-weight:600;color:var(--gold-l)}
+.names span{font-size:clamp(60px,18vw,86px);text-shadow:0 0 30px rgba(235,203,134,.25)}
+.names .amp{font-size:30px;color:var(--gold);font-family:"IBM Plex Sans Arabic",sans-serif;font-weight:400;margin:2px 0}
+.sub{font-size:15px;color:var(--gold);letter-spacing:.04em}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.tile{border:1px solid var(--line);border-radius:14px;padding:14px 6px;text-align:center;background:rgba(21,33,58,.7)}
+.tile small{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+.tile b{font-family:"Reem Kufi",sans-serif;font-weight:600;font-size:19px;color:var(--gold-l);font-variant-numeric:tabular-nums}
+.block{margin-top:46px;display:flex;flex-direction:column;gap:16px;text-align:center}
+.label{font-family:"Reem Kufi",sans-serif;font-weight:500;font-size:22px;color:var(--gold);display:flex;align-items:center;justify-content:center;gap:12px}
+.label::before,.label::after{content:"✦";font-size:11px;opacity:.8}
+.cd{gap:8px}
+.cd-u{border:1px solid var(--line);border-radius:12px;padding:12px 4px 8px;background:rgba(21,33,58,.7)}
+.cd-n{font-family:"Reem Kufi",sans-serif;font-weight:600;font-size:30px;color:var(--gold-l)}
+.cd-l{color:var(--muted)}
+.cd-done{font-family:"Reem Kufi",sans-serif;font-size:26px;color:var(--gold-l)}
+.venue-name{font-family:"Reem Kufi",sans-serif;font-weight:600;font-size:30px;color:var(--gold-l)}
+.venue-addr{color:var(--muted);margin-top:-8px}
+.btn-solid{background:linear-gradient(180deg,#E3C68A,#C29A55);color:#1A1406;border-color:#E3C68A}
+.btn-line{background:transparent;color:var(--gold-l);border-color:var(--gold)}
+.note{font-size:15px;color:var(--muted)}
+.card{border:1px solid var(--line);border-radius:18px;padding:22px 18px;background:rgba(21,33,58,.75)}
+.field>label,.field>legend{color:var(--gold-l)}
+.field input,.field select{background:var(--night);border:1px solid var(--line);color:var(--text)}
+.field input::placeholder{color:#7D869A}
+.field input:focus,.field select:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(207,174,107,.2)}
+.opt span{border:1px solid var(--line);background:var(--night);color:var(--text)}
+.opt input:checked+span{background:var(--gold);border-color:var(--gold);color:#1A1406}
+.rsvp .btn{width:100%}
+.rsvp-msg{color:var(--gold-l)}
+.link{color:var(--gold-l)}
+.closing{margin-top:48px;text-align:center;font-family:"Reem Kufi",sans-serif;font-size:clamp(24px,7vw,30px);color:var(--gold-l)}
+.music{background:rgba(21,33,58,.9);color:var(--gold-l);border:1px solid var(--line)}
+.credit{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<div class="gate" data-gate>
+  <p class="gate-kicker">تفضّلوا</p>
+  <button class="doorway" type="button" aria-label="افتح الباب وادخل للدعوة">
+    <span class="glow" aria-hidden="true"></span>
+    <span class="door door-r" aria-hidden="true"><span class="ring"></span></span>
+    <span class="door door-l" aria-hidden="true"><span class="ring"></span></span>
+  </button>
+  <p class="gate-hint">اضغط على الباب</p>
+</div>
+
+<main class="inv">
+  <header class="arch">
+    <svg class="star8" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="10" y="10" width="20" height="20"/><rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)"/></g><circle cx="20" cy="20" r="3" fill="currentColor"/></svg>
+    <p class="kicker">بسم الله الرحمن الرحيم</p>
+    <p class="lead">يسعدنا أن ندعوكم لمشاركتنا فرحة زفاف</p>
+    <h1 class="names kufi"><span>سيف</span><span class="amp" aria-label="و">&amp;</span><span>جود</span></h1>
+    <p class="sub">ليلة العمر</p>
+    <div class="tiles" aria-label="موعد الحفل">
+      <div class="tile"><small>اليوم</small><b>الجمعة</b></div>
+      <div class="tile"><small>التاريخ</small><b dir="ltr">25.12.2026</b></div>
+      <div class="tile"><small>الساعة</small><b>8:00 م</b></div>
+    </div>
+  </header>
+
+  <section class="block">
+    <h2 class="label">باقي على ليلتنا</h2>
+    <div class="cd" data-countdown role="timer" aria-label="الوقت المتبقي للموعد">
+      <div class="cd-u"><span class="cd-n" data-cd="d">0</span><span class="cd-l">يوم</span></div>
+      <div class="cd-u"><span class="cd-n" data-cd="h">00</span><span class="cd-l">ساعة</span></div>
+      <div class="cd-u"><span class="cd-n" data-cd="m">00</span><span class="cd-l">دقيقة</span></div>
+      <div class="cd-u"><span class="cd-n" data-cd="s">00</span><span class="cd-l">ثانية</span></div>
+    </div>
+    <p class="cd-done" data-cd-done hidden>اليوم يوم الفرح</p>
+  </section>
+
+  <section class="block">
+    <h2 class="label">المكان</h2>
+    <p class="venue-name">قاعة القمر</p>
+    <p class="venue-addr">عمّان</p>
+    <div class="actions">
+      <a class="btn btn-solid" data-map href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>افتح اللوكيشن</a>
+      <a class="btn btn-line" data-calendar href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v4M10 15h4"/></svg>أضف للتقويم</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="label">تأكيد الحضور</h2>
+    <div class="card">
+      <form class="rsvp" data-rsvp novalidate>
+      <div class="field"><label for="r-name">الاسم</label><input id="r-name" name="name" autocomplete="name" placeholder="اكتب اسمك"></div>
+      <fieldset class="field attend"><legend>رح تشرّفونا؟</legend>
+        <label class="opt"><input type="radio" name="attend" value="yes" checked><span>إن شاء الله بنحضر</span></label>
+        <label class="opt"><input type="radio" name="attend" value="no"><span>بنعتذر</span></label>
+      </fieldset>
+      <div class="field" data-count-wrap><label for="r-count">عدد الأشخاص</label>
+        <select id="r-count" name="count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>
+      </div>
+      <button type="submit" class="btn btn-solid">تأكيد الرد</button>
+    </form>
+    <div class="rsvp-done" data-rsvp-done hidden>
+      <p class="rsvp-msg" data-rsvp-msg></p>
+      <a class="btn btn-solid" data-rsvp-wa href="#" hidden>ابعث ردّك عالواتساب</a>
+      <p class="rsvp-demo" data-rsvp-demo hidden>هاي دعوة نموذج. بالدعوة الحقيقية بيوصل ردّك لأصحاب الدعوة عالواتساب.</p>
+      <button type="button" class="link" data-rsvp-again>تعديل الرد</button>
+    </div>
+    </div>
+  </section>
+
+  <p class="closing">وبحضوركم تكتمل ليلتنا</p>
+  <footer class="credit">
+    <a class="credit-link" href="https://instagram.com/khatm.jo" target="_blank" rel="noopener">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><path d="M186.9 100.0 C187.0 106.8 184.1 113.5 182.9 120.4 C181.7 127.4 182.8 135.8 179.6 141.8 C176.3 147.7 168.2 150.9 163.4 156.1 C158.5 161.4 155.5 167.9 150.5 173.1 C145.4 178.3 139.8 185.4 133.1 187.2 C126.4 189.0 117.5 183.8 110.2 183.9 C102.9 184.0 96.0 188.8 89.3 187.9 C82.6 187.1 76.6 181.5 70.1 178.9 C63.6 176.3 55.6 176.1 50.1 172.3 C44.5 168.6 40.8 161.6 36.7 156.1 C32.5 150.6 28.6 145.3 24.9 139.4 C21.2 133.6 17.5 127.6 14.7 121.0 C12.0 114.4 8.1 106.9 8.6 100.0 C9.0 93.1 14.8 86.3 17.4 79.6 C19.9 73.0 21.3 66.5 23.8 60.0 C26.4 53.5 29.5 47.4 32.9 40.6 C36.3 33.7 38.1 22.9 44.0 18.9 C49.9 14.9 60.8 17.6 68.4 16.6 C75.9 15.6 82.3 14.5 89.4 13.1 C96.6 11.6 104.4 6.6 111.2 7.9 C117.9 9.2 123.1 18.3 129.9 21.1 C136.8 23.8 146.3 20.9 152.1 24.5 C157.9 28.1 160.9 36.6 164.8 42.6 C168.7 48.5 172.6 54.2 175.5 60.4 C178.5 66.5 180.7 73.0 182.6 79.6 C184.5 86.3 186.9 93.2 186.9 100.0Z" fill="#6E1A27"/><circle cx="100" cy="100" r="66" fill="none" stroke="#3F0C16" stroke-width="5" opacity=".5"/></svg>
+      <span>دعوة إلكترونية من <b>ختم</b> · <bdi dir="ltr">@khatm.jo</bdi></span>
+    </a>
+    <a class="credit-more" data-catalog href="./">شوف باقي النماذج</a>
+  </footer>
+</main>
+<button class="music" type="button" data-music aria-pressed="false" aria-label="تشغيل الموسيقى"><svg class="i-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><svg class="i-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg></button>
+
+<script>
+/* Khatm invitation engine: countdown, map + calendar links, RSVP, generated music, open sequence. */
+(function () {
+  'use strict';
+  var K = (window.Khatm = {});
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var AR = '٠١٢٣٤٥٦٧٨٩';
+  K.reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  K.num = function (n, pad) {
+    var s = String(n);
+    if (pad) while (s.length < pad) s = '0' + s;
+    return K.cfg && K.cfg.digits === 'arab' ? s.replace(/\d/g, function (d) { return AR[d]; }) : s;
+  };
+
+  K.init = function (cfg) {
+    K.cfg = cfg;
+    countdown();
+    links();
+    rsvp();
+    musicToggle();
+    var cat = $('[data-catalog]');
+    if (cat) { if (cfg.catalogUrl) cat.href = cfg.catalogUrl; else cat.hidden = true; }
+  };
+
+  /* ---------- countdown ---------- */
+  function countdown() {
+    var box = $('[data-countdown]');
+    if (!box) return;
+    var target = new Date(K.cfg.date).getTime();
+    var done = $('[data-cd-done]');
+    var els = {};
+    ['d', 'h', 'm', 's'].forEach(function (k) { els[k] = $('[data-cd="' + k + '"]', box); });
+    function tick() {
+      var ms = target - Date.now();
+      if (ms <= 0) { box.hidden = true; if (done) done.hidden = false; return; }
+      var d = Math.floor(ms / 864e5); ms -= d * 864e5;
+      var h = Math.floor(ms / 36e5); ms -= h * 36e5;
+      var m = Math.floor(ms / 6e4); ms -= m * 6e4;
+      var s = Math.floor(ms / 1e3);
+      els.d.textContent = K.num(d);
+      els.h.textContent = K.num(h, 2);
+      els.m.textContent = K.num(m, 2);
+      els.s.textContent = K.num(s, 2);
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  /* ---------- map + calendar ---------- */
+  function stamp(t) { return new Date(t).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); }
+  function links() {
+    var c = K.cfg;
+    var map = c.mapUrl || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(c.mapQuery || c.venue));
+    $$('[data-map]').forEach(function (a) { a.href = map; a.target = '_blank'; a.rel = 'noopener'; });
+    var start = new Date(c.date).getTime();
+    var end = start + (c.hours || 4) * 36e5;
+    var cal = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text=' + encodeURIComponent(c.title) +
+      '&dates=' + stamp(start) + '/' + stamp(end) +
+      '&location=' + encodeURIComponent(c.venue) +
+      '&details=' + encodeURIComponent(c.calendarNote || '');
+    $$('[data-calendar]').forEach(function (a) { a.href = cal; a.target = '_blank'; a.rel = 'noopener'; });
+  }
+
+  /* ---------- RSVP ---------- */
+  function rsvp() {
+    var f = $('[data-rsvp]');
+    if (!f) return;
+    var done = $('[data-rsvp-done]');
+    var msgEl = $('[data-rsvp-msg]');
+    var wa = $('[data-rsvp-wa]');
+    var demo = $('[data-rsvp-demo]');
+    var again = $('[data-rsvp-again]');
+    var count = f.querySelector('[name="count"]');
+    var countWrap = $('[data-count-wrap]', f);
+    if (count) $$('option', count).forEach(function (o) { o.textContent = K.num(o.value); });
+    $$('[name="attend"]', f).forEach(function (r) {
+      r.addEventListener('change', function () {
+        if (countWrap) countWrap.hidden = (f.querySelector('[name="attend"]:checked') || {}).value === 'no';
+      });
+    });
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nameEl = f.querySelector('[name="name"]');
+      var name = nameEl.value.trim();
+      if (!name) { nameEl.focus(); nameEl.setAttribute('aria-invalid', 'true'); return; }
+      nameEl.removeAttribute('aria-invalid');
+      var going = (f.querySelector('[name="attend"]:checked') || {}).value !== 'no';
+      var n = count ? parseInt(count.value, 10) || 1 : 1;
+      var text = 'السلام عليكم، أنا ' + name + '. ' +
+        (going ? 'بأكّد حضوري' + (n > 1 ? ' (' + n + ' أشخاص)' : '') : 'بعتذر عن الحضور') +
+        '، ' + K.cfg.title + '.';
+      msgEl.textContent = going ? 'شكراً يا ' + name + '، بنستناكم.' : 'شكراً يا ' + name + '، الله يسعدك.';
+      if (K.cfg.whatsapp) {
+        wa.href = 'https://wa.me/' + K.cfg.whatsapp + '?text=' + encodeURIComponent(text);
+        wa.target = '_blank'; wa.rel = 'noopener';
+        wa.hidden = false; if (demo) demo.hidden = true;
+      } else {
+        wa.hidden = true; if (demo) demo.hidden = false;
+      }
+      f.hidden = true;
+      done.hidden = false;
+      msgEl.setAttribute('tabindex', '-1');
+      msgEl.focus();
+    });
+    if (again) again.addEventListener('click', function () { done.hidden = true; f.hidden = false; f.querySelector('[name="name"]').focus(); });
+  }
+
+  /* ---------- generated music box (no audio files) ---------- */
+  var M = (K.music = { ctx: null, playing: false });
+  function note(f, t, dur, vol, type) {
+    var ctx = M.ctx;
+    var o = ctx.createOscillator(), o2 = ctx.createOscillator();
+    var g = ctx.createGain(), g2 = ctx.createGain();
+    o.type = type || 'sine'; o.frequency.value = f;
+    o2.type = 'sine'; o2.frequency.value = f * 2.005;
+    g2.gain.value = 0.22;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); o2.connect(g2); g2.connect(g); g.connect(M.out);
+    o.start(t); o2.start(t); o.stop(t + dur + 0.05); o2.stop(t + dur + 0.05);
+  }
+  function schedule() {
+    var ctx = M.ctx;
+    if (!ctx || ctx.state !== 'running') return;
+    var m = K.cfg.music || {};
+    var root = m.root || 261.63, bpm = m.bpm || 66;
+    var chords = m.chords || [[0, 4, 7], [-3, 0, 4], [-7, -3, 0], [-5, -1, 2]];
+    var pat = m.pattern || [0, 1, 2, 3, 2, 1];
+    var step = 60 / bpm / 2;
+    while (M.next < ctx.currentTime + 0.45) {
+      var bar = Math.floor(M.step / pat.length) % chords.length;
+      var i = M.step % pat.length;
+      var ch = chords[bar];
+      var tones = [ch[0], ch[1], ch[2], ch[0] + 12];
+      note(root * Math.pow(2, (tones[pat[i]] + 12) / 12), M.next, 1.9, 0.2, m.wave);
+      if (i === 0) note(root * Math.pow(2, (ch[0] - 12) / 12), M.next, 3.4, 0.14, 'triangle');
+      M.next += step;
+      M.step++;
+    }
+  }
+  M.start = function () {
+    if (K.cfg.music === false) return;
+    try {
+      if (!M.ctx) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        var ctx = (M.ctx = new AC());
+        M.out = ctx.createGain(); M.out.gain.value = 0;
+        var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3000;
+        var dly = ctx.createDelay(); dly.delayTime.value = 0.34;
+        var fb = ctx.createGain(); fb.gain.value = 0.3;
+        var wet = ctx.createGain(); wet.gain.value = 0.35;
+        M.out.connect(lp); lp.connect(ctx.destination);
+        lp.connect(dly); dly.connect(fb); fb.connect(dly); dly.connect(wet); wet.connect(ctx.destination);
+        M.next = ctx.currentTime + 0.15; M.step = 0;
+        M.timer = setInterval(schedule, 90);
+      }
+      M.ctx.resume();
+      M.out.gain.cancelScheduledValues(M.ctx.currentTime);
+      M.out.gain.setTargetAtTime(0.5, M.ctx.currentTime, 0.6);
+      M.playing = true;
+    } catch (e) { M.playing = false; }
+    syncBtn();
+  };
+  M.stop = function () {
+    if (!M.ctx) return;
+    M.out.gain.setTargetAtTime(0, M.ctx.currentTime, 0.15);
+    M.playing = false;
+    setTimeout(function () { if (!M.playing && M.ctx) M.ctx.suspend(); }, 700);
+    syncBtn();
+  };
+  function syncBtn() {
+    var b = $('[data-music]');
+    if (!b) return;
+    b.setAttribute('aria-pressed', M.playing ? 'true' : 'false');
+    b.setAttribute('aria-label', M.playing ? 'إيقاف الموسيقى' : 'تشغيل الموسيقى');
+    b.classList.toggle('is-on', M.playing);
+  }
+  function musicToggle() {
+    var b = $('[data-music]');
+    if (!b) return;
+    if (K.cfg.music === false) { b.hidden = true; return; }
+    b.addEventListener('click', function () { if (M.playing) M.stop(); else M.start(); });
+    syncBtn();
+  }
+
+  /* ---------- opening ---------- */
+  K.open = function (delay) {
+    var body = document.body;
+    if (body.classList.contains('is-opening')) return;
+    M.start();
+    body.classList.add('is-opening');
+    var gate = $('[data-gate]');
+    if (gate && gate.tagName !== 'BUTTON') { var gb = $('button', gate); if (gb) gb.disabled = true; }
+    setTimeout(function () {
+      body.classList.add('is-open');
+      window.scrollTo(0, 0);
+      if (gate) {
+        gate.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { gate.hidden = true; }, K.reduced ? 0 : 900);
+      }
+      var h = $('main h1');
+      if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+    }, K.reduced ? 0 : (delay || 1400));
+  };
+
+  /* confetti on a full-screen canvas (used by the graduation design) */
+  K.confetti = function (opts) {
+    if (K.reduced) return;
+    opts = opts || {};
+    var cv = document.createElement('canvas');
+    cv.setAttribute('aria-hidden', 'true');
+    cv.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60';
+    document.body.appendChild(cv);
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = cv.width = innerWidth * dpr, H = cv.height = innerHeight * dpr;
+    var ctx = cv.getContext('2d');
+    var colors = opts.colors || ['#D2A44F', '#E07A5F', '#3D8B88', '#F4E3B5', '#1F2A44'];
+    var ox = (opts.x != null ? opts.x : 0.5) * W, oy = (opts.y != null ? opts.y : 0.45) * H;
+    var parts = [];
+    for (var i = 0; i < (opts.count || 160); i++) {
+      var a = Math.random() * Math.PI * 2, sp = (6 + Math.random() * 12) * dpr;
+      parts.push({ x: ox, y: oy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 8 * dpr, r: (4 + Math.random() * 6) * dpr, c: colors[i % colors.length], rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3, life: 0 });
+    }
+    var frames = 0;
+    (function loop() {
+      ctx.clearRect(0, 0, W, H);
+      parts.forEach(function (p) {
+        p.vy += 0.35 * dpr; p.vx *= 0.985; p.vy *= 0.985;
+        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.r, -p.r * 0.4, p.r * 2, p.r * 0.8);
+        ctx.restore();
+      });
+      if (++frames < 220) requestAnimationFrame(loop); else cv.remove();
+    })();
+  };
+})();
+
+/* ===== بيانات الدعوة: عدّل هون ===== */
+Khatm.init({
+  title: 'حفل زفاف سيف وجود',
+  date: '2026-12-25T20:00:00+03:00',
+  hours: 5,
+  venue: 'قاعة القمر، عمّان',
+  mapQuery: 'Amman, Jordan',
+  digits: 'latn',
+  whatsapp: '',
+  catalogUrl: './',
+  calendarNote: 'دعوة من ختم',
+  music: { root: 220, bpm: 58, chords: [[0, 3, 7], [-4, 0, 3], [-7, -4, 0], [-5, -2, 2]] }
+});
+document.querySelector('.doorway').addEventListener('click', function () { Khatm.open(1700); });
+</script>
+</body>
+</html>
