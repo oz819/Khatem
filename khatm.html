@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>نماذج دعوات ختم</title>
+<meta name="description" content="دعوات إلكترونية بتنفتح بختم: زفاف، خطوبة، كتب كتاب، تخرّج. جرّب النماذج واختار تصميمك.">
+<meta property="og:title" content="نماذج دعوات ختم">
+<meta property="og:description" content="دعوات إلكترونية بتنفتح بختم: زفاف، خطوبة، كتب كتاب، تخرّج.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F7F1E6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Tajawal:wght@400;500;700;800&family=Reem+Kufi:wght@600&family=El+Messiri:wght@600&family=Noto+Kufi+Arabic:wght@200;400&family=Lalezar&family=Amiri:wght@700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+
+/* Layout: brand header, then a two-column grid of design cards (one column on phones), then what every link includes and how to order. */
+:root{
+  --ivory:#F7F1E6; --paper:#FFFDF8; --wine:#6E1A27; --wine-d:#4A0F19; --gold:#A9844B;
+  --ink:#2B1D1A; --muted:#6B5A50; --line:#E3D5BD; --sand:#EADFCB;
+  --display:"Aref Ruqaa","Noto Naskh Arabic",serif;
+  --body:Tajawal,"Noto Sans Arabic","Segoe UI",sans-serif;
+}
+body{background:var(--ivory);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.page{max-width:980px;margin:0 auto;padding-block:32px 64px;display:flex;flex-direction:column;gap:44px}
+header{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+header svg{width:84px;height:84px;flex:none;filter:drop-shadow(0 8px 10px rgba(74,15,25,.25))}
+.brand{display:flex;flex-direction:column;gap:8px;min-width:0}
+h1{margin:0 0 6px;font-family:var(--display);font-weight:700;font-size:clamp(38px,8vw,58px);line-height:1.65;color:var(--wine);text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:52ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.pv{position:relative;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;overflow:hidden}
+.pv svg{width:46%;max-width:150px;height:auto}
+.pv .nm{font-size:26px;line-height:1.6}
+.num{position:absolute;top:12px;right:14px;font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;background:rgba(255,255,255,.85);color:var(--ink)}
+.body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body h2{margin:0;font-size:21px;font-weight:800;line-height:1.35}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--sand);color:var(--wine)}
+.tag.open{background:transparent;border:1px solid var(--line);color:var(--muted);font-weight:500}
+.body p{margin:0;color:var(--muted);font-size:15px}
+.go{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;background:var(--wine);color:#FFF8EE;font-weight:700;text-decoration:none}
+.go:hover{background:var(--wine-d)}
+.go:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.go svg{width:18px;height:18px}
+
+/* the six previews, each in its own design's palette and lettering */
+.p1{background:radial-gradient(120% 90% at 50% 40%,#FFFBF3,#EADFCB)}
+.p1 .nm{font-family:"Aref Ruqaa",serif;font-weight:700;color:#6E1A27}
+.p2{background:radial-gradient(90% 70% at 50% 45%,#1C2A47,#0E1626)}
+.p2 .nm{font-family:"Reem Kufi",sans-serif;font-weight:600;color:#EBD6A3}
+.p3{background:radial-gradient(100% 80% at 50% 40%,#F4F7F1,#DCE4D6)}
+.p3 .nm{font-family:"El Messiri",serif;font-weight:600;color:#3D5A44}
+.p4{background:linear-gradient(160deg,#FBFAF7,#E9E6DF)}
+.p4 .nm{font-family:"Noto Kufi Arabic",sans-serif;font-weight:200;color:#1D1D1B;font-size:30px}
+.p5{background:radial-gradient(90% 70% at 50% 42%,#2A3757,#1F2A44)}
+.p5 .nm{font-family:Lalezar,sans-serif;color:#D2A44F;font-size:30px}
+.p6{background:radial-gradient(90% 70% at 50% 45%,#4A3223,#2A1C14)}
+.p6 .nm{font-family:Amiri,serif;font-weight:700;color:#E8D6B0}
+
+section h2.sec{margin:0 0 14px;font-family:var(--display);font-weight:700;font-size:32px;line-height:1.7;color:var(--wine)}
+.feats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.feats li{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}
+.feats svg{width:26px;height:26px;flex:none;color:var(--wine);margin-top:2px}
+.feats b{display:block;font-size:16px}
+.feats span{display:block;color:var(--muted);font-size:14px;line-height:1.5}
+.order{background:var(--wine);color:#FFF8EE;border-radius:22px;padding:26px 22px;display:flex;flex-direction:column;gap:14px}
+.order h2{margin:0;font-family:var(--display);font-weight:700;font-size:30px;line-height:1.7}
+.prices{display:flex;flex-wrap:wrap;gap:10px}
+.price{background:rgba(255,248,238,.1);border:1px solid rgba(255,248,238,.25);border-radius:14px;padding:10px 16px;display:flex;flex-direction:column;min-width:150px;flex:1}
+.price small{font-size:13px;color:#EBD9C4}
+.price b{font-size:24px;font-weight:800;color:#F1D9B5}
+.order p{margin:0;color:#EBD9C4}
+.order a{color:#F1D9B5;font-weight:700}
+.order a:focus-visible{outline:3px solid #F1D9B5;outline-offset:3px}
+</style>
+</head>
+<body>
+<main class="page" dir="rtl" lang="ar">
+  <header>
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <defs><radialGradient id="wx" cx="38%" cy="34%" r="75%"><stop offset="0" stop-color="#8E2636"/><stop offset="1" stop-color="#561220"/></radialGradient></defs>
+      <path d="M186.9 100 C187 106.8 184.1 113.5 182.9 120.4 C181.7 127.4 182.8 135.8 179.6 141.8 C176.3 147.7 168.2 150.9 163.4 156.1 C158.5 161.4 155.5 167.9 150.5 173.1 C145.4 178.3 139.8 185.4 133.1 187.2 C126.4 189 117.5 183.8 110.2 183.9 C102.9 184 96 188.8 89.3 187.9 C82.6 187.1 76.6 181.5 70.1 178.9 C63.6 176.3 55.6 176.1 50.1 172.3 C44.5 168.6 40.8 161.6 36.7 156.1 C32.5 150.6 28.6 145.3 24.9 139.4 C21.2 133.6 17.5 127.6 14.7 121 C12 114.4 8.1 106.9 8.6 100 C9 93.1 14.8 86.3 17.4 79.6 C19.9 73 21.3 66.5 23.8 60 C26.4 53.5 29.5 47.4 32.9 40.6 C36.3 33.7 38.1 22.9 44 18.9 C49.9 14.9 60.8 17.6 68.4 16.6 C75.9 15.6 82.3 14.5 89.4 13.1 C96.6 11.6 104.4 6.6 111.2 7.9 C117.9 9.2 123.1 18.3 129.9 21.1 C136.8 23.8 146.3 20.9 152.1 24.5 C157.9 28.1 160.9 36.6 164.8 42.6 C168.7 48.5 172.6 54.2 175.5 60.4 C178.5 66.5 180.7 73 182.6 79.6 C184.5 86.3 186.9 93.2 186.9 100Z" fill="url(#wx)"/>
+      <circle cx="100" cy="100" r="66" fill="none" stroke="#3F0C16" stroke-width="3" opacity=".55"/>
+      <text x="100" y="118" text-anchor="middle" font-family="Aref Ruqaa, serif" font-weight="700" font-size="60" fill="#F1D9B5">ختم</text>
+    </svg>
+    <div class="brand">
+      <h1>نماذج دعوات ختم</h1>
+      <p class="lead">افتح أي نموذج وجرّبه متل ما رح يشوفه ضيوفك. اختار اللي بيعجبك، وإحنا بنعدّله بأسمائكم وتاريخكم ومكانكم.</p>
+    </div>
+  </header>
+
+  <div class="grid">
+    <article class="card">
+      <div class="pv p1"><span class="num">١</span>
+        <svg viewBox="0 0 150 100" aria-hidden="true"><rect x="2" y="2" width="146" height="96" rx="6" fill="#F3EADA" stroke="#D6C5A6"/><path d="M3 97 L75 52 L147 97" fill="none" stroke="#D6C5A6"/><path d="M3 3 L75 62 L147 3 Z" fill="#EDE1CB" stroke="#D6C5A6"/><circle cx="75" cy="62" r="17" fill="#6E1A27"/><circle cx="75" cy="62" r="12" fill="none" stroke="#3F0C16" stroke-width="1.5" opacity=".6"/></svg>
+        <span class="nm">ليث &amp; كريمته</span></div>
+      <div class="body">
+        <h2>ختم العاجي</h2>
+        <div class="tags"><span class="tag">زفاف</span><span class="tag open">بتنفتح بكسر الختم</span></div>
+        <p>ظرف عاجي بختم شمع نبيذي، والأسماء بخط الرقعة. توقيع ختم الأساسي.</p>
+        <a class="go" href="1-ivory-seal.html">افتح النموذج<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="pv p2"><span class="num">٢</span>
+        <svg viewBox="0 0 120 150" aria-hidden="true"><path d="M8 148 V58 A52 52 0 0 1 112 58 V148" fill="none" stroke="#CFAE6B" stroke-width="2"/><path d="M60 148 V12 A48 48 0 0 0 14 60 V148 Z" fill="#16233D" stroke="#CFAE6B" stroke-width="1.5"/><path d="M60 148 V12 A48 48 0 0 1 106 60 V148 Z" fill="#16233D" stroke="#CFAE6B" stroke-width="1.5"/><g fill="none" stroke="#CFAE6B" stroke-opacity=".5"><rect x="27" y="70" width="16" height="16"/><rect x="27" y="70" width="16" height="16" transform="rotate(45 35 78)"/><rect x="77" y="70" width="16" height="16"/><rect x="77" y="70" width="16" height="16" transform="rotate(45 85 78)"/><rect x="27" y="104" width="16" height="16"/><rect x="27" y="104" width="16" height="16" transform="rotate(45 35 112)"/><rect x="77" y="104" width="16" height="16"/><rect x="77" y="104" width="16" height="16" transform="rotate(45 85 112)"/></g><circle cx="53" cy="96" r="4" fill="none" stroke="#CFAE6B" stroke-width="1.5"/><circle cx="67" cy="96" r="4" fill="none" stroke="#CFAE6B" stroke-width="1.5"/></svg>
+        <span class="nm">سيف &amp; جود</span></div>
+      <div class="body">
+        <h2>ليلة ذهبية</h2>
+        <div class="tags"><span class="tag">زفاف</span><span class="tag open">باب بينفتح على نور</span></div>
+        <p>سماء ليل ونجوم، وباب مقوّس بنقش ذهبي بينفتح على الدعوة.</p>
+        <a class="go" href="2-golden-night.html">افتح النموذج<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="pv p3"><span class="num">٣</span>
+        <svg viewBox="0 0 120 150" aria-hidden="true"><rect x="6" y="4" width="108" height="142" rx="8" fill="#FBFBF6"/><rect x="82" y="4" width="12" height="142" fill="#C9897C"/><rect x="6" y="40" width="108" height="12" fill="#C9897C"/><ellipse cx="78" cy="38" rx="12" ry="8" fill="none" stroke="#C9897C" stroke-width="5" transform="rotate(20 78 38)"/><ellipse cx="98" cy="38" rx="12" ry="8" fill="none" stroke="#C9897C" stroke-width="5" transform="rotate(-20 98 38)"/><rect x="83" y="39" width="10" height="12" rx="3" fill="#A86C60"/><path d="M14 128 C34 112 52 132 74 116" fill="none" stroke="#7F9C82" stroke-width="1.5"/><ellipse cx="30" cy="118" rx="6" ry="3" fill="#DCE6D8" stroke="#7F9C82" transform="rotate(-40 30 118)"/><ellipse cx="50" cy="124" rx="6" ry="3" fill="#DCE6D8" stroke="#7F9C82" transform="rotate(30 50 124)"/><ellipse cx="66" cy="116" rx="6" ry="3" fill="#DCE6D8" stroke="#7F9C82" transform="rotate(-30 66 116)"/></svg>
+        <span class="nm">كرم &amp; سلمى</span></div>
+      <div class="body">
+        <h2>حديقة</h2>
+        <div class="tags"><span class="tag">خطوبة</span><span class="tag open">بتفكّ الشريطة</span></div>
+        <p>أخضر هادي وأغصان مرسومة بالإيد، وشريطة وردية بتنفك وبتنفتح الدعوة.</p>
+        <a class="go" href="3-garden-ribbon.html">افتح النموذج<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="pv p4"><span class="num">٤</span>
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="44" fill="#fff" stroke="#D9D5CC" stroke-width="2"/><path d="M60 16 A44 44 0 1 1 22 82" fill="none" stroke="#A88B57" stroke-width="3" stroke-linecap="round"/><text x="60" y="66" text-anchor="middle" font-family="Noto Kufi Arabic, sans-serif" font-size="15" fill="#1D1D1B">افتح</text></svg>
+        <span class="nm">فارس و ريم</span></div>
+      <div class="body">
+        <h2>رخام</h2>
+        <div class="tags"><span class="tag">زفاف عصري</span><span class="tag open">ضغطة مطوّلة + امسح لتكشف الموعد</span></div>
+        <p>أبيض رخامي وخط رفيع، والموعد مخفي تحت طبقة بتمسحها بإصبعك.</p>
+        <a class="go" href="4-marble-hold.html">افتح النموذج<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="pv p5"><span class="num">٥</span>
+        <svg viewBox="0 0 300 200" aria-hidden="true"><path d="M86 98 L86 150 C86 172 214 172 214 150 L214 98 Z" fill="#141C2E"/><path d="M150 20 L290 70 L150 120 L10 70 Z" fill="#1A2338" stroke="#D2A44F" stroke-width="4" stroke-linejoin="round"/><path d="M150 62 L232 92 L232 150" fill="none" stroke="#D2A44F" stroke-width="4"/><path d="M224 150 h16 l4 34 h-24 z" fill="#D2A44F"/><circle cx="150" cy="62" r="8" fill="#D2A44F"/><g fill="#E07A5F"><rect x="40" y="20" width="10" height="5" transform="rotate(30 45 22)"/><rect x="250" y="130" width="10" height="5" transform="rotate(-20 255 132)"/></g><g fill="#3D8B88"><rect x="260" y="30" width="10" height="5" transform="rotate(50 265 32)"/><rect x="30" y="140" width="10" height="5"/></g></svg>
+        <span class="nm">عمر تخرّج!</span></div>
+      <div class="body">
+        <h2>تخرّج</h2>
+        <div class="tags"><span class="tag">تخرّج</span><span class="tag open">ارمِ القبعة وطيّر الكونفيتي</span></div>
+        <p>كحلي وذهبي، والقبعة بتطير بضغطة وبتنزل كونفيتي، وفي زر "احتفل معنا".</p>
+        <a class="go" href="5-graduation-cap.html">افتح النموذج<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="pv p6"><span class="num">٦</span>
+        <svg viewBox="0 0 160 80" aria-hidden="true"><rect x="10" y="10" width="140" height="16" rx="8" fill="#9A6A45"/><circle cx="8" cy="18" r="7" fill="#C9A35C"/><circle cx="152" cy="18" r="7" fill="#C9A35C"/><rect x="16" y="26" width="128" height="28" fill="#F2E5C9"/><rect x="10" y="54" width="140" height="16" rx="8" fill="#9A6A45"/><circle cx="8" cy="62" r="7" fill="#C9A35C"/><circle cx="152" cy="62" r="7" fill="#C9A35C"/><rect x="74" y="6" width="12" height="68" fill="#8C2F1E"/><circle cx="80" cy="40" r="10" fill="#A8452F"/></svg>
+        <span class="nm">يزن و ليان</span></div>
+      <div class="body">
+        <h2>مخطوطة</h2>
+        <div class="tags"><span class="tag">كتب كتاب</span><span class="tag open">مخطوطة بتنفرد</span></div>
+        <p>ورق قديم وخط أميري وآية الروم، ومخطوطة مربوطة بشريطة حمرا بتنفرد قدامك.</p>
+        <a class="go" href="6-katb-scroll.html">افتح النموذج<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
+      </div>
+    </article>
+  </div>
+
+  <section aria-labelledby="h-feats">
+    <h2 class="sec" id="h-feats">شو بتلاقي بكل دعوة</h2>
+    <ul class="feats">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 5.5h15a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17V7a1.5 1.5 0 0 1 1.5-1.5z"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><div><b>فتحة مميزة</b><span>كل تصميم إله طريقة فتح خاصة فيه</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg><div><b>عدّاد للموعد</b><span>أيام وساعات ودقايق لحد الحفلة</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>اللوكيشن بضغطة</b><span>بيفتح القاعة على خرائط جوجل</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><div><b>أضف للتقويم</b><span>الضيف بيحفظ الموعد على موبايله</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16.5 9.5"/></svg><div><b>تأكيد الحضور</b><span>الردود بتوصلكم عالواتساب مع عدد الأشخاص</span></div></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5.5l11-2V16"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg><div><b>موسيقى هادية</b><span>بتشتغل لما تنفتح الدعوة، وبتنطفي بزر</span></div></li>
+    </ul>
+  </section>
+
+  <section class="order" aria-labelledby="h-order">
+    <h2 id="h-order">اطلب دعوتك</h2>
+    <div class="prices">
+      <div class="price"><small>رابط ختم</small><b>15 د.أ</b></div>
+      <div class="price"><small>رابط مع تأكيد حضور</small><b>20 د.أ</b></div>
+      <div class="price"><small>الباقة الكاملة</small><b>25 د.أ</b></div>
+    </div>
+    <p>ابعثلنا رقم التصميم، والأسماء، والتاريخ والوقت، والقاعة. التعديل الأول مجاني.</p>
+    <p>انستغرام: <a href="https://instagram.com/khatm.jo" target="_blank" rel="noopener"><bdi dir="ltr">@khatm.jo</bdi></a></p>
+  </section>
+</main>
+</body>
+</html>
