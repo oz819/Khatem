@@ -15,6 +15,8 @@
 <script>
 /* بيانات التواصل: عدّلها من هون */
 window.MISHKAT = {
+  /* صورة الخلفية ثلاثية الأبعاد (المسجد والمصحف): حط مسارها هون، مثلاً 'assets/mishkat-hero.jpg'. فاضي = الرسم المؤقت */
+  heroImage: '',
   whatsapp: '962782365424',
   message: 'السلام عليكم، حابب أعرف أكثر عن منصة مِشكاة لمركزنا'
 };
@@ -45,7 +47,7 @@ body{
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
 }
 a{color:inherit}
-.wrap{max-width:1180px;margin:0 auto}
+.wrap{max-width:1360px;margin:0 auto}
 svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
 
@@ -60,35 +62,40 @@ svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke
 .btn.sm{min-height:42px;padding:0 20px;font-size:15px}
 
 /* ---------- hero ---------- */
-.hero{position:relative;margin-top:16px;border-radius:32px;overflow:hidden;color:#fff;isolation:isolate;
+.stage{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;margin-top:16px;direction:ltr}
+.stage .phones{zoom:.86;margin-left:-52px;position:relative;z-index:3;padding-top:30px}
+.hero.has-img{background:var(--img) center/cover no-repeat}
+.hero.has-img .scene{opacity:0}
+.srch{width:40px;height:40px;flex:none;border-radius:12px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);color:#fff;font-size:19px;display:grid;place-items:center;cursor:pointer}
+.hero{position:relative;border-radius:32px;overflow:hidden;color:#fff;isolation:isolate;
   background:linear-gradient(180deg,#10173A 0%,#1B2456 38%,#3B3A7C 68%,#8F78B4 100%);
-  box-shadow:0 30px 60px -30px rgba(18,26,61,.7),inset 0 0 0 1px rgba(255,255,255,.12);min-height:700px;display:flex;flex-direction:column}
+  box-shadow:0 30px 60px -30px rgba(18,26,61,.7),inset 0 0 0 1px rgba(255,255,255,.12);min-height:640px;display:flex;flex-direction:column}
 .scene{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;
   background:linear-gradient(90deg,rgba(16,23,58,.88) 0%,rgba(16,23,58,.6) 30%,rgba(16,23,58,0) 58%)}
 
-nav.top{display:flex;align-items:center;gap:18px;padding:22px 34px;direction:ltr}
+nav.top{display:flex;align-items:center;gap:10px;padding:20px 26px;direction:ltr}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
-.logo svg{width:58px;height:58px}
-.logo b{display:block;font-family:var(--display);font-weight:700;font-size:27px;line-height:1.3}
+.logo svg{width:52px;height:52px}
+.logo b{display:block;font-family:var(--display);font-weight:700;font-size:24px;line-height:1.3}
 .logo small{display:block;font-family:var(--display);font-size:11px;letter-spacing:.42em;opacity:.85;direction:ltr;text-align:center;margin-top:-2px}
 .links{display:flex;align-items:center;gap:6px;margin-inline:auto;direction:rtl;list-style:none;padding:0;margin-block:0}
-.links a{display:block;padding:8px 14px;font-family:var(--display);font-size:15px;text-decoration:none;color:rgba(255,255,255,.88);border-bottom:2px solid transparent}
+.links a{display:block;padding:8px 8px;white-space:nowrap;font-family:var(--display);font-size:14.5px;text-decoration:none;color:rgba(255,255,255,.88);border-bottom:2px solid transparent}
 .links a:hover{color:#fff}
 .links a.on{color:var(--gold);border-color:var(--gold)}
 .acts{display:flex;gap:10px;direction:rtl}
 .burger{display:none;width:46px;height:46px;border-radius:14px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#fff;font-size:22px;align-items:center;justify-content:center;cursor:pointer}
 
-.hero-body{flex:1;display:flex;align-items:center;padding:10px 60px 170px;direction:ltr}
-.hero-txt{direction:rtl;max-width:500px;text-align:center}
-.hero-txt h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(64px,9vw,104px);line-height:1.35;text-shadow:0 6px 30px rgba(0,0,0,.35)}
-.hero-txt .sub{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(22px,3vw,32px);line-height:1.6;
+.hero-body{flex:1;display:flex;align-items:center;padding:10px 40px 160px;direction:ltr}
+.hero-txt{direction:rtl;max-width:410px;text-align:center}
+.hero-txt h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(60px,7vw,88px);line-height:1.35;text-shadow:0 6px 30px rgba(0,0,0,.35)}
+.hero-txt .sub{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(21px,2.3vw,28px);line-height:1.6;
   background:linear-gradient(180deg,#F8DFAE,#DDA550);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
 .hero-txt .tri{margin:14px 0 26px;font-size:20px;opacity:.92;letter-spacing:.02em}
 .cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
 
 /* feature strip */
-.strip{position:relative;z-index:2;margin:-104px 34px 0;padding:22px 10px;border-radius:26px;list-style:none;
+.strip{direction:rtl;position:relative;z-index:2;margin:-104px 34px 0;padding:22px 10px;border-radius:26px;list-style:none;
   display:grid;grid-template-columns:repeat(5,1fr);
   background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(246,240,252,.82));backdrop-filter:blur(14px);
   box-shadow:var(--shadow),inset 0 0 0 1px rgba(255,255,255,.9)}
@@ -109,13 +116,30 @@ section{margin-top:84px}
 .pill svg{color:var(--gold);font-size:1.15em;fill:var(--gold);stroke:none}
 .intro{max-width:640px;margin:0 auto 30px;text-align:center;color:var(--muted)}
 
-.feats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.feats li{background:linear-gradient(180deg,#fff,#F7F2FC);border-radius:22px;padding:26px 20px;text-align:center;
+.board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:70px 22px;margin-top:84px;direction:ltr}
+.board section{margin:0;direction:rtl}
+.board .panel{height:100%}
+.b-dash{grid-column:span 5}.b-feat{grid-column:span 7}.b-sys{grid-column:span 8}.b-id{grid-column:span 4}
+.b-dash .panel{display:flex;align-items:center;justify-content:center;padding-inline:40px}
+.b-dash .laptop{width:100%}
+.b-dash .dash{grid-template-columns:112px 1fr;min-height:300px}
+.b-dash .two{grid-template-columns:1fr}
+.feats{list-style:none;margin:0;padding:0;height:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feats li{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff,#F7F2FC);border-radius:22px;padding:24px 10px;text-align:center;
   box-shadow:0 10px 24px -16px rgba(27,37,80,.4),inset 0 0 0 1px rgba(27,37,80,.06);transition:transform .25s}
 .feats li:hover{transform:translateY(-4px)}
-.feats .ic{width:62px;height:62px;margin:0 auto 12px;border-radius:18px;display:grid;place-items:center;background:var(--navy);color:var(--gold);font-size:30px}
-.feats h3{margin:0 0 6px;font-family:var(--display);font-weight:600;font-size:18px;line-height:1.6}
-.feats p{margin:0;color:var(--muted);font-size:15.5px}
+.feats svg{font-size:44px;color:var(--navy);margin-bottom:10px}
+.feats svg .g{stroke:var(--gold-d)}
+.feats h3{margin:0;font-family:var(--display);font-weight:600;font-size:16.5px;line-height:1.7}
+.ident{height:100%;border-radius:30px;padding:30px 20px;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  background:radial-gradient(80% 50% at 50% 0%,rgba(111,106,168,.5),transparent 70%),linear-gradient(180deg,var(--navy-l),var(--navy-d));box-shadow:var(--shadow),inset 0 0 0 1px rgba(255,255,255,.12)}
+.ident h2{margin:0 0 14px;font-family:var(--display);font-weight:600;font-size:22px}
+.ident .lg{width:112px;height:112px}
+.ident b{font-family:var(--display);font-weight:700;font-size:42px;line-height:1.4}
+.ident small{font-family:var(--display);letter-spacing:.45em;font-size:13px;direction:ltr;opacity:.9}
+.ident .sw{margin:20px 0 10px;gap:12px}
+.ident .sw i{width:40px;height:40px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75),0 6px 12px -6px #000}
+.ident p{margin:0;font-family:var(--display);font-size:18px;color:var(--gold-l)}
 
 /* ---------- app (phones) ---------- */
 .app{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
@@ -125,7 +149,7 @@ section{margin-top:84px}
 .ticks{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
 .ticks li{display:flex;gap:10px;align-items:flex-start}
 .ticks svg{color:var(--gold-d);font-size:22px;margin-top:4px}
-.phones{display:flex;gap:22px;direction:ltr;align-items:flex-end}
+.phones{display:flex;gap:18px;direction:ltr;align-items:flex-end}
 .phone{width:244px;height:500px;border-radius:42px;padding:9px;background:linear-gradient(145deg,#3A3F63,#0E1330);
   box-shadow:0 30px 50px -22px rgba(18,26,61,.75),inset 0 0 0 1.5px rgba(255,255,255,.25);position:relative;flex:none}
 .phone:first-child{transform:translateY(-22px) rotate(-3deg)}
@@ -182,12 +206,13 @@ section{margin-top:84px}
 .kpi b{display:block;font-family:var(--display);font-size:20px;font-weight:700}
 .kpi:nth-child(1){background:#E2F2EE}.kpi:nth-child(2){background:#FBEBD3}.kpi:nth-child(3){background:#E3E6F8}
 .two{display:grid;grid-template-columns:1fr 1.15fr;gap:8px}
-.box{background:#fff;border-radius:12px;padding:10px;min-width:0}
+.box{background:#fff;border-radius:12px;padding:10px;min-width:0;display:flex;flex-direction:column}
+.box>svg{margin-block:auto}
 .box h5{margin:0 0 6px;font-family:var(--display);font-size:12px}
 .box svg{width:100%;height:auto;display:block}
 .acts-l{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center}
-.acts-l svg{width:66px;grid-row:span 3}
-.acts-l li{font-size:11px;color:var(--muted);border-bottom:1px dashed var(--line);padding-bottom:3px}
+.acts-l svg{width:54px;grid-row:span 3}
+.acts-l li{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:var(--muted);border-bottom:1px dashed var(--line);padding-bottom:3px}
 .rows{display:grid;grid-template-columns:auto 1fr auto;gap:6px 10px;align-items:center;font-size:11px;color:var(--muted)}
 .rows .bar{margin:0}
 .rows b{font-family:var(--display);color:var(--ink)}
@@ -255,7 +280,21 @@ footer .logo small{font-size:9px}
 }
 
 /* ---------- responsive ---------- */
+@media (max-width:1300px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .stage .phones{zoom:1;margin:50px auto 0;justify-content:center}
+  .hero{min-height:680px}
+  .hero-txt{max-width:500px}
+  .hero-body{padding-inline:60px}
+  .b-dash,.b-feat{grid-column:span 12}
+  .b-dash .laptop{max-width:640px}
+  .b-dash .dash{grid-template-columns:132px 1fr}
+  .b-dash .two{grid-template-columns:1fr 1.15fr}
+}
 @media (max-width:1020px){
+  .b-sys,.b-id{grid-column:span 12}
+  .srch{margin-inline-start:auto}
+  .acts{margin-inline-start:0!important}
   .links{display:none;position:absolute;top:92px;left:16px;right:16px;z-index:5;flex-direction:column;align-items:stretch;gap:0;padding:10px;border-radius:20px;background:rgba(18,26,61,.96);box-shadow:0 20px 40px -20px #000}
   .links.open{display:flex}
   .links a{padding:12px 14px;border:0;font-size:16px}
@@ -279,6 +318,8 @@ footer .logo small{font-size:9px}
   .strip li:nth-child(odd){border:0}
   .strip li:last-child{grid-column:1/-1}
   .feats{grid-template-columns:repeat(2,1fr);gap:12px}
+  .board{gap:64px 0;margin-top:70px}
+  .b-dash .panel{padding-inline:16px}
   .plans{grid-template-columns:1fr}
   .kids{grid-template-columns:repeat(2,1fr);gap:0 14px}
   .kids li:nth-child(odd)::after{right:50%;left:-7px}
@@ -300,10 +341,14 @@ footer .logo small{font-size:9px}
   .acts .btn svg{display:none}
   .burger{width:42px;height:42px}
   .hero-txt h1{font-size:60px}
-  .phones{gap:0;zoom:.7;padding-top:30px}
+  .stage .phones{gap:0;zoom:.7;padding-top:30px}
+  .srch{display:none}
+  .acts{margin-inline-start:auto!important}
   .phone:last-child{margin-left:-50px}
-  .feats li{padding:20px 12px}
-  .dash{grid-template-columns:1fr}
+  .feats li{padding:20px 8px}
+  .feats h3{font-size:15px}
+  .dash,.b-dash .dash{grid-template-columns:1fr}
+  .b-dash .two{grid-template-columns:1fr}
   .side{display:none}
   .two{grid-template-columns:1fr}
   .cta .btn{flex:1 1 100%}
@@ -354,6 +399,8 @@ footer .logo small{font-size:9px}
 <div class="wrap">
 
 <!-- ================= HERO ================= -->
+<div class="stage">
+<div class="stage-main">
 <header class="hero" id="home">
 
   <!-- night scene: mosque, lanterns, mushaf on its stand -->
@@ -458,7 +505,7 @@ footer .logo small{font-size:9px}
     <ellipse cx="760" cy="470" rx="90" ry="34" fill="#FFE9B8" opacity=".35" filter="url(#halo)"/>
 
     <!-- lanterns -->
-    <g transform="translate(-60 0)"><g class="sway">
+    <g transform="translate(-104 0)"><g class="sway">
       <path d="M1096 0v178" stroke="#E3B062" stroke-width="2"/>
       <circle cx="1096" cy="250" r="70" fill="#FFD58A" opacity=".5" filter="url(#halo)"/>
       <path d="M1096 172l16 16h-32z" fill="url(#gg)"/>
@@ -468,8 +515,8 @@ footer .logo small{font-size:9px}
       <path d="M1096 206c-9 10-13 20-13 34s4 24 13 34c9-10 13-20 13-34s-4-24-13-34z" fill="none" stroke="#8A5A22" stroke-width="2"/>
       <path d="M1070 290h52l-8 12h-36z" fill="url(#gg)"/><circle cx="1096" cy="310" r="5" fill="url(#gg)"/>
     </g></g>
-    <g transform="translate(-84 0)"><g class="sway" style="animation-delay:-2s">
-      <path d="M1160 0v70" stroke="#E3B062" stroke-width="1.500"/>
+    <g transform="translate(-232 96)"><g class="sway" style="animation-delay:-2s">
+      <path d="M1160 -100v170" stroke="#E3B062" stroke-width="1.500"/>
       <circle cx="1160" cy="112" r="40" fill="#FFD58A" opacity=".45" filter="url(#halo)"/>
       <path d="M1160 66l10 10h-20z" fill="url(#gg)"/>
       <path d="M1148 78h24l5 16v32l-5 13h-24l-5-13V94z" fill="#3A2A18"/>
@@ -478,7 +525,7 @@ footer .logo small{font-size:9px}
       <path d="M1144 139h32l-5 8h-22z" fill="url(#gg)"/>
     </g></g>
     <!-- floor lantern -->
-    <g>
+    <g transform="translate(-55 0)">
       <circle cx="1010" cy="560" r="60" fill="#FFD58A" opacity=".5" filter="url(#halo)"/>
       <path d="M1010 508l14 14h-28z" fill="url(#gg)"/>
       <path d="M994 524h32l6 18v40l-6 14h-32l-6-14v-40z" fill="#3A2A18"/>
@@ -493,6 +540,7 @@ footer .logo small{font-size:9px}
       <svg aria-hidden="true"><use href="#logo"/></svg>
       <span><b>مِشكاة</b><small>MISHKAT</small></span>
     </a>
+    <button class="srch" type="button" aria-label="بحث"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></button>
     <ul class="links" id="links">
       <li><a class="on" href="#home">الرئيسية</a></li>
       <li><a href="#about">عن المنصة</a></li>
@@ -515,7 +563,7 @@ footer .logo small{font-size:9px}
       <p class="tri">تعليم .. متابعة .. إنجاز</p>
       <div class="cta">
         <a class="btn gold" href="#contact">ابدأ الآن</a>
-        <a class="btn ghost" href="#app"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>شاهد كيف تعمل</a>
+        <a class="btn ghost" href="#features"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>شاهد فيديو تعريفي</a>
       </div>
     </div>
   </div>
@@ -528,43 +576,10 @@ footer .logo small{font-size:9px}
   <li><svg class="i" aria-hidden="true"><use href="#i-support"/></svg><b>دعم فني</b><span>متخصص</span></li>
   <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><b>أمان عالٍ</b><span>وحماية للبيانات</span></li>
 </ul>
+</div>
 
-<main>
-
-<!-- ================= FEATURES ================= -->
-<section id="features" class="rv">
-  <div class="panel">
-    <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg>مميزات المنصة</h2>
-    <p class="intro">كل ما يحتاجه المركز في مكان واحد: من تسجيل الطالب أول يوم، إلى شهادة ختمه.</p>
-    <ul class="feats">
-      <li><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg></div><h3>إدارة شاملة لمناهج الحفظ</h3><p>خطط حفظ ومراجعة لكل حلقة ولكل طالب، بالأجزاء والسور والصفحات.</p></li>
-      <li><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-target"/></svg></div><h3>متابعة دقيقة لمستوى الحفظ</h3><p>تسميع يومي، تقييم، وملاحظات المعلم، وكلها محفوظة في سجل الطالب.</p></li>
-      <li><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-mic"/></svg></div><h3>التسميع الصوتي والتقييم الذكي</h3><p>الطالب يسجّل تلاوته من البيت، والمعلم يسمع ويقيّم في أي وقت.</p></li>
-      <li><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-video"/></svg></div><h3>دعم التعليم عن بُعد</h3><p>حلقات أونلاين للطلاب البعيدين، بنفس المتابعة والتقارير.</p></li>
-      <li><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-cert"/></svg></div><h3>شهادات إنجاز رقمية</h3><p>شهادة باسم الطالب عند إتمام كل جزء أو سورة، جاهزة للمشاركة.</p></li>
-      <li><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></div><h3>تقارير وإحصائيات متقدمة</h3><p>حضور، تقدّم، وأداء الحلقات والمعلمين، في لوحة واحدة واضحة.</p></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= APP ================= -->
-<section id="app" class="rv">
-  <div class="panel">
-    <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>تطبيق الطالب والمعلم</h2>
-    <div class="app">
-      <div class="app-txt">
-        <h3>رحلتك مع القرآن.. أسهل وأقرب</h3>
-        <p>الطالب يعرف وين وصل وشو المطلوب منه اليوم، وولي الأمر يتابع أول بأول.</p>
-        <ul class="ticks">
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>مستوى الحفظ ونسبة الإنجاز أمامك دائمًا</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>جدول الحلقات والاختبارات والتقارير</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>إشعارات لولي الأمر بالحضور والتقييم</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>أوسمة وشهادات تشجّع الطالب على المواصلة</span></li>
-        </ul>
-        <a class="btn navy" href="#contact">اطلب نسخة تجريبية</a>
-      </div>
-
-      <div class="phones" aria-hidden="true">
+<!-- two phone mockups -->
+      <div class="phones" id="app" aria-hidden="true">
         <div class="phone">
           <div class="scr dark">
             <svg class="lg"><use href="#logo"/></svg>
@@ -598,15 +613,14 @@ footer .logo small{font-size:9px}
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+</div>
 
-<!-- ================= DASHBOARD ================= -->
-<section id="centers" class="rv">
+<main>
+<div class="board">
+
+<section id="centers" class="b-dash rv">
   <div class="panel">
     <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-crown"/></svg>لوحة إدارة المركز</h2>
-    <div class="dash-grid">
       <div class="laptop" aria-hidden="true">
         <div class="lid">
           <div class="dash">
@@ -659,25 +673,26 @@ footer .logo small{font-size:9px}
         </div>
         <div class="base"></div>
       </div>
-      <div class="dash-txt">
-        <h3>مركزك كله في شاشة واحدة</h3>
-        <p>المدير يشوف أعداد الطلاب والحلقات والمعلمين، ونسب الحضور والتقدّم، بدون دفاتر ولا جداول.</p>
-        <ul class="ticks">
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>تسجيل الطلاب وتوزيعهم على الحلقات</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>حضور وغياب يومي بضغطة</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>تقارير جاهزة للطباعة والمشاركة</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>صلاحيات مختلفة للمدير والمشرف والمعلم</span></li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ================= SYSTEM MAP ================= -->
-<section id="about" class="rv">
+<section id="features" class="b-feat rv">
+  <div class="panel">
+    <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg>مميزات المنصة</h2>
+    <ul class="feats">
+      <li><svg class="i" aria-hidden="true"><use href="#i-book"/></svg><h3>إدارة شاملة<br>لمناهج الحفظ</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-target"/></svg><h3>متابعة دقيقة<br>لمستوى الحفظ</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-mic"/></svg><h3>التسميع الصوتي<br>والتقييم الذكي</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-video"/></svg><h3>دعم التعليم<br>عن بُعد</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-cert"/></svg><h3>شهادات إنجاز<br>رقمية</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg><h3>تقارير وإحصائيات<br>متقدمة</h3></li>
+    </ul>
+  </div>
+</section>
+
+<section id="about" class="b-sys rv">
   <div class="panel">
     <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-hex"/></svg>مخطط النظام</h2>
-    <p class="intro">منصة واحدة، وأربع واجهات: كل واحد يشوف اللي يخصّه فقط.</p>
     <div class="tree">
       <div class="root">المنصة الرئيسية<small>(مِشكاة)</small></div>
       <div class="stem"></div>
@@ -691,6 +706,18 @@ footer .logo small{font-size:9px}
     <div class="cloud"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>بنية سحابية آمنة وموثوقة</div>
   </div>
 </section>
+
+<section id="identity" class="b-id rv">
+  <div class="ident">
+    <h2>الهوية البصرية</h2>
+    <svg class="lg" aria-hidden="true"><use href="#logo"/></svg>
+    <b>مِشكاة</b><small>MISHKAT</small>
+    <div class="sw" aria-label="ألوان الهوية"><i style="background:#1B2550"></i><i style="background:#E3B062"></i><i style="background:#FFF6E6"></i><i style="background:#6F6AA8"></i></div>
+    <p>نورٌ في كل بيت</p>
+  </div>
+</section>
+
+</div>
 
 <!-- ================= PRICING ================= -->
 <section id="pricing" class="rv">
@@ -749,7 +776,7 @@ footer .logo small{font-size:9px}
     <span><b>مِشكاة</b><small>MISHKAT</small></span>
   </a>
   <span>نورٌ في كل بيت</span>
-  <span class="sw" aria-hidden="true"><i style="background:#1B2550"></i><i style="background:#E3B062"></i><i style="background:#FFF6E6"></i><i style="background:#6F6AA8"></i></span>
+  <span>© مِشكاة</span>
 </footer>
 
 </div>
@@ -765,6 +792,12 @@ footer .logo small{font-size:9px}
   document.querySelectorAll('[data-plan]').forEach(function(a){
     a.href = link(a.getAttribute('data-plan')); a.target = '_blank'; a.rel = 'noopener';
   });
+
+  if (C.heroImage){
+    var im = new Image(), hero = document.getElementById('home');
+    im.onload = function(){ hero.style.setProperty('--img', 'url("' + C.heroImage + '")'); hero.classList.add('has-img'); };
+    im.src = C.heroImage;
+  }
 
   var burger = document.getElementById('burger'), links = document.getElementById('links');
   burger.addEventListener('click', function(){
