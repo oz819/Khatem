@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>مِشكاة · منصة إدارة مراكز تحفيظ القرآن الكريم</title>
+<meta name="description" content="مِشكاة: منصة متكاملة لإدارة مراكز تحفيظ القرآن الكريم. حلقات، طلاب، معلمون، متابعة الحفظ، تقارير وشهادات، على الموقع والتطبيق.">
+<meta property="og:title" content="مِشكاة · منصة إدارة مراكز تحفيظ القرآن الكريم">
+<meta property="og:description" content="تعليم .. متابعة .. إنجاز. منصة واحدة للمركز والمعلم والطالب وولي الأمر.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#141C42">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap">
+<script>
+/* إعدادات الصفحة */
+window.MISHKAT = {
+  /* صورة الخلفية ثلاثية الأبعاد (المسجد والمصحف): حط مسارها هون، مثلاً 'assets/mishkat-hero.jpg'. فاضي = الرسم المؤقت */
+  heroImage: ''
+};
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0}
+:root{
+  --navy:#1B2550; --navy-d:#121A3D; --navy-l:#2A3670;
+  --gold:#E3B062; --gold-d:#C48B38; --gold-l:#F6D9A2;
+  --cream:#FFF6E6; --lilac:#EDE8F5; --lilac-d:#D9D0EA; --violet:#6F6AA8;
+  --ink:#1B2147; --muted:#5C5F80; --line:rgba(27,37,80,.12);
+  --card:rgba(255,255,255,.72);
+  --display:Alexandria,Tajawal,"Noto Sans Arabic","Segoe UI",sans-serif;
+  --body:Tajawal,"Noto Sans Arabic","Segoe UI",sans-serif;
+  --goldgrad:linear-gradient(180deg,#F3CD8B 0%,#DDA550 55%,#C48B38 100%);
+  --shadow:0 18px 40px -18px rgba(27,37,80,.35);
+}
+body{
+  font-family:var(--body);font-size:17px;line-height:1.75;color:var(--ink);
+  background:
+    radial-gradient(60% 40% at 85% 0%,rgba(246,217,162,.45),transparent 70%),
+    radial-gradient(50% 35% at 0% 30%,rgba(190,170,225,.5),transparent 70%),
+    radial-gradient(60% 40% at 100% 75%,rgba(190,170,225,.4),transparent 70%),
+    linear-gradient(180deg,#F4F0FA,#E9E3F3 60%,#F3EEF8);
+  background-attachment:fixed;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+a{color:inherit}
+.wrap{max-width:1360px;margin:0 auto}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
+
+/* ---------- buttons ---------- */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;
+  font-family:var(--display);font-weight:600;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold{background:var(--goldgrad);color:var(--navy-d);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 10px 24px -10px rgba(196,139,56,.9)}
+.btn.ghost{color:#fff;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.06);backdrop-filter:blur(6px)}
+.btn.ghost:hover{background:rgba(255,255,255,.14)}
+.btn.navy{background:var(--navy);color:#fff}
+.btn.sm{min-height:42px;padding:0 20px;font-size:15px}
+
+/* ---------- hero ---------- */
+.stage{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;margin-top:16px;direction:ltr}
+.stage .phones{zoom:.86;margin-left:-52px;position:relative;z-index:3;padding-top:30px}
+.hero.has-img{background:var(--img) center/cover no-repeat}
+.hero.has-img .scene{opacity:0}
+.srch{width:40px;height:40px;flex:none;border-radius:12px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);color:#fff;font-size:19px;display:grid;place-items:center;cursor:pointer}
+.hero{position:relative;border-radius:32px;overflow:hidden;color:#fff;isolation:isolate;
+  background:linear-gradient(180deg,#10173A 0%,#1B2456 38%,#3B3A7C 68%,#8F78B4 100%);
+  box-shadow:0 30px 60px -30px rgba(18,26,61,.7),inset 0 0 0 1px rgba(255,255,255,.12);min-height:640px;display:flex;flex-direction:column}
+.scene{position:absolute;inset:0;width:100%;height:100%;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(16,23,58,.88) 0%,rgba(16,23,58,.6) 30%,rgba(16,23,58,0) 58%)}
+
+nav.top{display:flex;align-items:center;gap:10px;padding:20px 26px;direction:ltr}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.logo svg{width:52px;height:52px}
+.logo b{display:block;font-family:var(--display);font-weight:700;font-size:24px;line-height:1.3}
+.logo small{display:block;font-family:var(--display);font-size:11px;letter-spacing:.42em;opacity:.85;direction:ltr;text-align:center;margin-top:-2px}
+.links{display:flex;align-items:center;gap:6px;margin-inline:auto;direction:rtl;list-style:none;padding:0;margin-block:0}
+.links a{display:block;padding:8px 8px;white-space:nowrap;font-family:var(--display);font-size:14.5px;text-decoration:none;color:rgba(255,255,255,.88);border-bottom:2px solid transparent}
+.links a:hover{color:#fff}
+.links a.on{color:var(--gold);border-color:var(--gold)}
+.acts{display:flex;gap:10px;direction:rtl}
+.burger{display:none;width:46px;height:46px;border-radius:14px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#fff;font-size:22px;align-items:center;justify-content:center;cursor:pointer}
+
+.hero-body{flex:1;display:flex;align-items:center;padding:10px 40px 160px;direction:ltr}
+.hero-txt{direction:rtl;max-width:410px;text-align:center}
+.hero-txt h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(60px,7vw,88px);line-height:1.35;text-shadow:0 6px 30px rgba(0,0,0,.35)}
+.hero-txt .sub{margin:0;font-family:var(--display);font-weight:600;font-size:clamp(21px,2.3vw,28px);line-height:1.6;
+  background:linear-gradient(180deg,#F8DFAE,#DDA550);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
+.hero-txt .tri{margin:14px 0 26px;font-size:20px;opacity:.92;letter-spacing:.02em}
+.cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
+/* feature strip */
+.strip{direction:rtl;position:relative;z-index:2;margin:-104px 34px 0;padding:22px 10px;border-radius:26px;list-style:none;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(246,240,252,.82));backdrop-filter:blur(14px);
+  box-shadow:var(--shadow),inset 0 0 0 1px rgba(255,255,255,.9)}
+.strip li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:4px 12px;border-inline-start:1px solid var(--line)}
+.strip li:first-child{border:0}
+.strip svg{font-size:34px;color:var(--navy);margin-bottom:4px}
+.strip svg .g{stroke:var(--gold-d)}
+.strip b{font-family:var(--display);font-weight:600;font-size:16px;line-height:1.5}
+.strip span{color:var(--muted);font-size:15px;line-height:1.5}
+
+/* ---------- sections ---------- */
+section{margin-top:84px}
+.panel{position:relative;border-radius:30px;padding:64px 34px 38px;background:var(--card);backdrop-filter:blur(10px);
+  box-shadow:var(--shadow),inset 0 0 0 1px rgba(255,255,255,.85)}
+.pill{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:12px;white-space:nowrap;
+  margin:0;padding:10px 34px;border-radius:999px;background:linear-gradient(180deg,var(--navy-l),var(--navy-d));color:#fff;
+  font-family:var(--display);font-weight:600;font-size:clamp(18px,2.4vw,23px);line-height:1.6;box-shadow:0 12px 24px -12px rgba(18,26,61,.8)}
+.pill svg{color:var(--gold);font-size:1.15em;fill:var(--gold);stroke:none}
+.intro{max-width:640px;margin:0 auto 30px;text-align:center;color:var(--muted)}
+
+.board{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:70px 22px;margin-top:84px;direction:ltr}
+.board section{margin:0;direction:rtl}
+.board .panel{height:100%}
+.b-dash{grid-column:span 5}.b-feat{grid-column:span 7}.b-sys{grid-column:span 8}.b-id{grid-column:span 4}
+.b-dash .panel{display:flex;align-items:center;justify-content:center;padding-inline:40px}
+.b-dash .laptop{width:100%}
+.b-dash .dash{grid-template-columns:112px 1fr;min-height:300px}
+.b-dash .two{grid-template-columns:1fr}
+.feats{list-style:none;margin:0;padding:0;height:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feats li{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff,#F7F2FC);border-radius:22px;padding:24px 10px;text-align:center;
+  box-shadow:0 10px 24px -16px rgba(27,37,80,.4),inset 0 0 0 1px rgba(27,37,80,.06);transition:transform .25s}
+.feats li:hover{transform:translateY(-4px)}
+.feats svg{font-size:44px;color:var(--navy);margin-bottom:10px}
+.feats svg .g{stroke:var(--gold-d)}
+.feats h3{margin:0;font-family:var(--display);font-weight:600;font-size:16.5px;line-height:1.7}
+.ident{height:100%;border-radius:30px;padding:30px 20px;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  background:radial-gradient(80% 50% at 50% 0%,rgba(111,106,168,.5),transparent 70%),linear-gradient(180deg,var(--navy-l),var(--navy-d));box-shadow:var(--shadow),inset 0 0 0 1px rgba(255,255,255,.12)}
+.ident h2{margin:0 0 14px;font-family:var(--display);font-weight:600;font-size:22px}
+.ident .lg{width:112px;height:112px}
+.ident b{font-family:var(--display);font-weight:700;font-size:42px;line-height:1.4}
+.ident small{font-family:var(--display);letter-spacing:.45em;font-size:13px;direction:ltr;opacity:.9}
+.ident .sw{margin:20px 0 10px;gap:12px}
+.ident .sw i{width:40px;height:40px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75),0 6px 12px -6px #000}
+.ident p{margin:0;font-family:var(--display);font-size:18px;color:var(--gold-l)}
+
+/* ---------- app (phones) ---------- */
+.app{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.app>*,.dash-grid>*{min-width:0}
+.app h3{margin:0 0 10px;font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,32px);line-height:1.6}
+.app p{margin:0 0 18px;color:var(--muted)}
+.ticks{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.ticks li{display:flex;gap:10px;align-items:flex-start}
+.ticks svg{color:var(--gold-d);font-size:22px;margin-top:4px}
+.phones{display:flex;gap:18px;direction:ltr;align-items:flex-end}
+.phone{width:244px;height:500px;border-radius:42px;padding:9px;background:linear-gradient(145deg,#3A3F63,#0E1330);
+  box-shadow:0 30px 50px -22px rgba(18,26,61,.75),inset 0 0 0 1.5px rgba(255,255,255,.25);position:relative;flex:none}
+.phone:first-child{transform:translateY(-22px) rotate(-3deg)}
+.phone:last-child{transform:rotate(3deg)}
+.phone::before{content:"";position:absolute;top:17px;left:50%;transform:translateX(-50%);width:74px;height:20px;border-radius:12px;background:#0A0D22;z-index:3}
+.scr{height:100%;border-radius:34px;overflow:hidden;direction:rtl;position:relative;display:flex;flex-direction:column}
+.scr.dark{background:linear-gradient(180deg,#10173A,#27306A 55%,#8F78B4);color:#fff;align-items:center;text-align:center;padding:62px 18px 20px}
+.scr.dark .lg{width:86px;height:86px}
+.scr.dark b{font-family:var(--display);font-size:30px;font-weight:700;line-height:1.4}
+.scr.dark small{font-family:var(--display);letter-spacing:.4em;font-size:10px;opacity:.85;direction:ltr}
+.scr.dark p{margin:12px 0 0;font-size:14px;color:rgba(255,255,255,.9)}
+.scr.dark .mini{flex:1;width:130%;min-height:0;margin-top:4px}
+.scr.dark .btn{width:100%;min-height:40px;font-size:14px;margin-top:8px}
+.scr.light{background:linear-gradient(180deg,#F5F1FB,#fff);padding:50px 14px 0;font-size:13px;color:var(--ink)}
+.hello{display:flex;align-items:center;gap:10px}
+.av{width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.hello span{display:block;color:var(--muted);font-size:12px;line-height:1.3}
+.hello b{font-family:var(--display);font-size:14px}
+.lvl{margin-top:12px;background:#fff;border-radius:18px;padding:12px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 18px -12px rgba(27,37,80,.45)}
+.lvl svg{width:54px;height:54px;flex:none}
+.lvl span{display:block;color:var(--muted);font-size:12px}
+.lvl b{font-family:var(--display);font-size:16px}
+.bar{height:5px;border-radius:5px;background:var(--lilac-d);margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:70%;background:var(--goldgrad);border-radius:5px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.tiles div{background:#fff;border-radius:14px;padding:10px 4px;text-align:center;box-shadow:0 8px 18px -12px rgba(27,37,80,.45);font-family:var(--display);font-size:11.5px}
+.tiles svg{display:block;margin:0 auto 4px;font-size:22px;color:var(--navy)}
+.scr.light h4{margin:14px 2px 8px;font-family:var(--display);font-size:14px}
+.ach{background:linear-gradient(135deg,#fff,#FBF1DD);border-radius:16px;padding:12px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 18px -12px rgba(27,37,80,.45)}
+.ach svg{font-size:30px;color:var(--gold-d)}
+.ach b{display:block;font-family:var(--display);font-size:13px}
+.ach span{color:var(--muted);font-size:12px}
+.tab{margin:auto -14px 0;padding:10px 8px 14px;background:#fff;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;font-size:10.5px;color:var(--muted);box-shadow:0 -8px 20px -14px rgba(27,37,80,.4)}
+.tab svg{display:block;margin:0 auto 2px;font-size:20px}
+.tab .on{color:var(--navy);font-weight:700}
+
+/* ---------- dashboard (laptop) ---------- */
+.dash-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center}
+.laptop{direction:ltr}
+.lid{background:#0E1330;border-radius:18px 18px 0 0;padding:12px 12px 14px;box-shadow:0 26px 40px -26px rgba(18,26,61,.8)}
+.base{height:14px;margin:0 -5%;border-radius:0 0 16px 16px;background:linear-gradient(180deg,#D6D3E2,#9E9BB5);position:relative}
+.base::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:16%;height:5px;border-radius:0 0 8px 8px;background:#8683A0}
+.dash{direction:rtl;display:grid;grid-template-columns:132px 1fr;background:#F4F1FA;border-radius:8px;overflow:hidden;font-size:12px;min-height:330px}
+.side{background:linear-gradient(180deg,#1B2550,#121A3D);color:rgba(255,255,255,.8);padding:12px 8px}
+.side .lg{display:flex;align-items:center;gap:6px;color:#fff;font-family:var(--display);font-weight:700;font-size:14px;margin-bottom:12px}
+.side .lg svg{width:26px;height:26px}
+.side ul{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+.side li{display:flex;align-items:center;gap:7px;padding:6px 8px;border-radius:8px;font-size:11.5px}
+.side li.on{background:rgba(227,176,98,.2);color:var(--gold-l)}
+.side svg.i{font-size:14px}
+.main{padding:12px;display:grid;gap:10px;align-content:start;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpi{border-radius:12px;padding:8px;text-align:center;line-height:1.4}
+.kpi b{display:block;font-family:var(--display);font-size:20px;font-weight:700}
+.kpi:nth-child(1){background:#E2F2EE}.kpi:nth-child(2){background:#FBEBD3}.kpi:nth-child(3){background:#E3E6F8}
+.two{display:grid;grid-template-columns:1fr 1.15fr;gap:8px}
+.box{background:#fff;border-radius:12px;padding:10px;min-width:0;display:flex;flex-direction:column}
+.box>svg{margin-block:auto}
+.box h5{margin:0 0 6px;font-family:var(--display);font-size:12px}
+.box svg{width:100%;height:auto;display:block}
+.acts-l{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center}
+.acts-l svg{width:54px;grid-row:span 3}
+.acts-l li{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;color:var(--muted);border-bottom:1px dashed var(--line);padding-bottom:3px}
+.rows{display:grid;grid-template-columns:auto 1fr auto;gap:6px 10px;align-items:center;font-size:11px;color:var(--muted)}
+.rows .bar{margin:0}
+.rows b{font-family:var(--display);color:var(--ink)}
+.dash-txt h3{margin:0 0 10px;font-family:var(--display);font-weight:700;font-size:clamp(24px,3vw,32px);line-height:1.6}
+.dash-txt p{margin:0 0 18px;color:var(--muted)}
+
+/* ---------- system map ---------- */
+.tree{display:flex;flex-direction:column;align-items:center}
+.root{padding:12px 34px;border-radius:18px;background:var(--goldgrad);color:var(--navy-d);font-family:var(--display);font-weight:700;text-align:center;line-height:1.5;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 12px 24px -12px rgba(196,139,56,.9)}
+.root small{display:block;font-weight:500;font-size:14px}
+.stem{width:2px;height:28px;background:var(--navy)}
+.kids{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;max-width:900px}
+.kids li{position:relative;padding-top:28px;text-align:center}
+.kids li::before{content:"";position:absolute;top:0;left:50%;width:2px;height:28px;background:var(--navy)}
+.kids li::after{content:"";position:absolute;top:0;height:2px;background:var(--navy);left:-8px;right:-8px}
+.kids li:first-child::after{right:50%}
+.kids li:last-child::after{left:50%}
+.kid{height:100%;background:linear-gradient(180deg,#FFF8EA,#F9E7C6);border-radius:18px;padding:18px 10px;box-shadow:0 10px 22px -16px rgba(196,139,56,.9),inset 0 0 0 1px rgba(196,139,56,.25)}
+.kid svg{font-size:30px;color:var(--navy)}
+.kid b{display:block;font-family:var(--display);font-weight:600;font-size:16px;line-height:1.6}
+.kid span{color:var(--muted);font-size:14.5px}
+.cloud{margin:30px auto 0;display:flex;align-items:center;justify-content:center;gap:12px;max-width:420px;padding:12px 24px;border-radius:999px;background:linear-gradient(180deg,var(--navy-l),var(--navy-d));color:#fff;font-family:var(--display);font-weight:500;text-align:center}
+.cloud svg{font-size:26px;color:var(--gold)}
+
+/* ---------- plans ---------- */
+.plans{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.plan{display:flex;flex-direction:column;background:linear-gradient(180deg,#fff,#F7F2FC);border-radius:24px;padding:28px 22px;box-shadow:0 10px 24px -16px rgba(27,37,80,.4),inset 0 0 0 1px rgba(27,37,80,.06)}
+.plan.hot{background:linear-gradient(180deg,var(--navy-l),var(--navy-d));color:#fff;box-shadow:0 24px 40px -22px rgba(18,26,61,.9),inset 0 0 0 1.5px var(--gold)}
+.plan h3{margin:0;font-family:var(--display);font-weight:700;font-size:22px}
+.plan .for{margin:2px 0 14px;color:var(--muted);font-size:15.5px}
+.plan.hot .for{color:rgba(255,255,255,.75)}
+.plan .tag{align-self:flex-start;margin-bottom:8px;padding:2px 12px;border-radius:999px;background:var(--goldgrad);color:var(--navy-d);font-family:var(--display);font-weight:600;font-size:13px}
+.plan ul{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:8px;font-size:16px}
+.plan li{display:flex;gap:8px;align-items:flex-start}
+.plan li svg{color:var(--gold-d);font-size:20px;margin-top:5px}
+.plan.hot li svg{color:var(--gold)}
+.plan .btn{margin-top:auto}
+
+/* ---------- contact + footer ---------- */
+footer{margin:56px 0 0;padding:28px 0 40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;color:var(--muted);font-size:15px;border-top:1px solid var(--line)}
+footer .logo{color:var(--navy)}
+footer .logo svg{width:46px;height:46px}
+footer .logo b{font-size:22px}
+footer .logo small{font-size:9px}
+.sw{display:flex;gap:8px;align-items:center}
+.sw i{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(27,37,80,.2)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.tw{animation:tw 3.2s ease-in-out infinite}
+.tw:nth-child(3n){animation-delay:1s}.tw:nth-child(3n+1){animation-delay:2s}
+@keyframes tw{50%{opacity:.25}}
+.sway{transform-box:fill-box;transform-origin:50% 0;animation:sway 5s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .tw,.sway{animation:none}
+  .btn,.feats li{transition:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1300px){
+  .stage{grid-template-columns:minmax(0,1fr)}
+  .stage .phones{zoom:1;margin:50px auto 0;justify-content:center}
+  .hero{min-height:680px}
+  .hero-txt{max-width:500px}
+  .hero-body{padding-inline:60px}
+  .b-dash,.b-feat{grid-column:span 12}
+  .b-dash .laptop{max-width:640px}
+  .b-dash .dash{grid-template-columns:132px 1fr}
+  .b-dash .two{grid-template-columns:1fr 1.15fr}
+}
+@media (max-width:1020px){
+  .b-sys,.b-id{grid-column:span 12}
+  .srch{margin-inline-start:auto}
+  .acts{margin-inline-start:0!important}
+  .links{display:none;position:absolute;top:92px;left:16px;right:16px;z-index:5;flex-direction:column;align-items:stretch;gap:0;padding:10px;border-radius:20px;background:rgba(18,26,61,.96);box-shadow:0 20px 40px -20px #000}
+  .links.open{display:flex}
+  .links a{padding:12px 14px;border:0;font-size:16px}
+  .burger{display:inline-flex}
+  .acts{margin-inline-start:auto}
+  .app,.dash-grid{grid-template-columns:1fr}
+  .phones{justify-content:center}
+  .app-txt,.dash-txt{text-align:center}
+  .ticks{justify-items:start;max-width:420px;margin-inline:auto;text-align:start}
+}
+@media (max-width:860px){
+  .hero{min-height:0}
+  .hero::after{background:linear-gradient(180deg,rgba(16,23,58,.55) 0%,rgba(16,23,58,.25) 45%,rgba(16,23,58,0) 62%)}
+  .scene{inset:auto auto 0 50%;height:calc(min(92vw,440px) + 70px);width:auto;aspect-ratio:1200/720;transform:translateX(-71.7%)}
+  .hero-body{padding:6px 20px 0;justify-content:center;align-items:flex-start}
+  .hero-body::after{content:"";display:block}
+  .hero{padding-bottom:min(92vw,440px)}
+  nav.top{padding:16px 14px;gap:10px}
+  .acts .in{display:none}
+  .strip{margin:-64px 12px 0;grid-template-columns:repeat(2,1fr);gap:16px 0;padding:20px 6px}
+  .strip li:nth-child(odd){border:0}
+  .strip li:last-child{grid-column:1/-1}
+  .feats{grid-template-columns:repeat(2,1fr);gap:12px}
+  .board{gap:64px 0;margin-top:70px}
+  .b-dash .panel{padding-inline:16px}
+  .plans{grid-template-columns:1fr}
+  .kids{grid-template-columns:repeat(2,1fr);gap:0 14px}
+  .kids li:nth-child(odd)::after{right:50%;left:-7px}
+  .kids li:nth-child(even)::after{left:50%;right:-7px}
+  .kids li:nth-child(n+3){padding-top:42px}
+  .kids li:nth-child(n+3)::before{height:42px;top:0}
+  .kids li:nth-child(n+3)::after{top:14px}
+  .kids li:nth-child(n+3)::before{top:14px;height:28px}
+  .panel{padding:54px 16px 26px;border-radius:26px}
+  section{margin-top:70px}
+  footer{justify-content:center;text-align:center}
+}
+@media (max-width:560px){
+  body{font-size:16.5px}
+  .logo svg{width:46px;height:46px}
+  .logo b{font-size:22px}
+  .logo small{font-size:9px}
+  .acts .btn{padding:0 14px;font-size:14px;min-height:40px}
+  .acts .btn svg{display:none}
+  .burger{width:42px;height:42px}
+  .hero-txt h1{font-size:60px}
+  .stage .phones{gap:0;zoom:.7;padding-top:30px}
+  .srch{display:none}
+  .acts{margin-inline-start:auto!important}
+  .phone:last-child{margin-left:-50px}
+  .feats li{padding:20px 8px}
+  .feats h3{font-size:15px}
+  .dash,.b-dash .dash{grid-template-columns:1fr}
+  .b-dash .two{grid-template-columns:1fr}
+  .side{display:none}
+  .two{grid-template-columns:1fr}
+  .cta .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8DFAE"/><stop offset=".55" stop-color="#E3B062"/><stop offset="1" stop-color="#B97F2E"/></linearGradient>
+    <symbol id="logo" viewBox="0 0 64 64">
+      <path d="M32 3c3 6 9 9 14 14 6 6 8 13 8 21v9H44v-9c0-5-2-9-5-12-3-2-5-5-7-8-2 3-4 6-7 8-3 3-5 7-5 12v9H10v-9c0-8 2-15 8-21 5-5 11-8 14-14z" fill="none" stroke="url(#gg)" stroke-width="3.2" stroke-linejoin="round"/>
+      <path d="M32 24l2.3 5.7L40 32l-5.7 2.3L32 40l-2.3-5.7L24 32l5.7-2.3z" fill="url(#gg)"/>
+      <path d="M32 50c-6-4-14-5-24-4v10c10-1 18 0 24 4 6-4 14-5 24-4V46c-10-1-18 0-24 4z" fill="url(#gg)"/>
+      <path d="M32 50v10" stroke="#121A3D" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-7.96A6 6 0 0 1 18 9.5 4.3 4.3 0 0 1 17.5 18z"/><path class="g" d="M9.5 14.5l2 2 3.5-4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 19c.6-3.4 3.2-5.2 6.5-5.2s5.900 1.800 6.500 5.200z"/><circle class="g" cx="4.800" cy="10" r="2"/><circle class="g" cx="19.200" cy="10" r="2"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6.500 20v-6M11 20V9M15.500 20v-8M20 20V6"/><path class="g" d="M5 9l5-4 4 3 5-5"/></symbol>
+    <symbol id="i-support" viewBox="0 0 24 24"><path d="M5 14v-2a7 7 0 0 1 14 0v2"/><rect x="3.500" y="13" width="3.500" height="5.500" rx="1.500"/><rect x="17" y="13" width="3.500" height="5.500" rx="1.500"/><path class="g" d="M19 18.500c0 1.800-2 2.500-5 2.500"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.500 2.800v5.400c0 4.600-3 8-7.500 9.800-4.500-1.800-7.500-5.200-7.500-9.800V5.800z"/><path class="g" d="M8.800 12l2.300 2.300 4.200-4.600"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.500C10 5 7 4.500 3.500 5v13c3.500-.5 6.500 0 8.500 1.500 2-1.500 5-2 8.500-1.500V5C17 4.500 14 5 12 6.500z"/><path class="g" d="M12 6.500v13"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.500"/><circle class="g" cx="12" cy="12" r="4.500"/><circle cx="12" cy="12" r="1" /></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.500 11.500a6.500 6.500 0 0 0 13 0M12 18v3"/><path class="g" d="M9 21h6"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2.500"/><path d="M8 21h8"/><path class="g" d="M10.500 8.800v4.400l3.800-2.200z"/></symbol>
+    <symbol id="i-cert" viewBox="0 0 24 24"><rect x="4" y="3.500" width="16" height="12" rx="2"/><path d="M8 8h8M8 11.500h5"/><circle class="g" cx="16" cy="16" r="2.600"/><path class="g" d="M14.500 18.200V22l1.500-1 1.500 1v-3.800"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.300l2.700 2.700 5.300-5.700"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v8.500h-5.500V14h-5v5.500H4z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.500V11a6 6 0 0 1 12 0v5.500l1.500 1.500h-15zM10 20.500h4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2.500"/><path d="M4 10h16M8.500 3v4M15.500 3v4"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M5 19h4l10-10-4-4L5 15zM13 7l4 4"/></symbol>
+    <symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.500"/><path d="M8.500 13.500L7 21l5-2.500 5 2.500-1.500-7.500"/><path d="M12 6.500l.9 1.800 2 .3-1.500 1.400.4 2-1.800-1-1.800 1 .4-2-1.500-1.400 2-.3z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.500l2.900 6 6.600.9-4.800 4.600 1.200 6.500-5.900-3.200-5.900 3.200 1.200-6.500L2.500 9.400l6.600-.9z"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4.500 4L12 5l4.500 7L21 8l-1.800 10H4.800z"/></symbol>
+    <symbol id="i-hex" viewBox="0 0 24 24"><path d="M12 2l8.700 5v10L12 22l-8.700-5V7z"/><circle cx="12" cy="12" r="3" fill="#1B2550"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.500" width="10" height="19" rx="2.500"/><path d="M11 18.500h2"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.500 12.500V4.500h8l9 9-8 8z"/><circle cx="8" cy="9" r="1.500" fill="#1B2550"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.500v15l12-7.500z" fill="currentColor"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500"/><path d="M16 16l4.500 4.500"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.500 20.500c.8-4 3.800-6 7.500-6s6.700 2 7.500 6z"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<!-- ================= HERO ================= -->
+<div class="stage">
+<div class="stage-main">
+<header class="hero" id="home">
+
+  <!-- night scene: mosque, lanterns, mushaf on its stand -->
+  <svg class="scene" viewBox="-100 0 1200 720" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFE3B0" stop-opacity=".95"/><stop offset=".35" stop-color="#F3B7A6" stop-opacity=".55"/><stop offset="1" stop-color="#B79BD6" stop-opacity="0"/></radialGradient>
+      <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3E7F3"/><stop offset="1" stop-color="#B9A3D3"/></linearGradient>
+      <linearGradient id="wall2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9C9EA"/><stop offset="1" stop-color="#9A86BF"/></linearGradient>
+      <linearGradient id="dome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#DCCDEE"/><stop offset="1" stop-color="#8F7FBA"/></linearGradient>
+      <linearGradient id="lit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF3CF"/><stop offset="1" stop-color="#F6B25A"/></linearGradient>
+      <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CDB9E2"/><stop offset=".25" stop-color="#E7DAF1"/><stop offset="1" stop-color="#F6F1FA"/></linearGradient>
+      <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9773F"/><stop offset=".5" stop-color="#7C4420"/><stop offset="1" stop-color="#4E2810"/></linearGradient>
+      <linearGradient id="page" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFDF5"/><stop offset="1" stop-color="#EAD9B8"/></linearGradient>
+      <linearGradient id="marble" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D5C6E6"/></linearGradient>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+      <filter id="halo" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="14"/></filter>
+      <path id="arch" d="M-9 0v-22c0-8 5-12 9-17 4 5 9 9 9 17v22z"/>
+      <g id="minaret">
+        <rect x="-11" y="-300" width="22" height="300" fill="url(#wall)"/>
+        <rect x="-11" y="-300" width="8" height="300" fill="#fff" opacity=".35"/>
+        <rect x="-18" y="-232" width="36" height="10" rx="3" fill="#F3E7F3"/><rect x="-16" y="-222" width="32" height="5" fill="#9A86BF"/>
+        <rect x="-18" y="-152" width="36" height="10" rx="3" fill="#F3E7F3"/><rect x="-16" y="-142" width="32" height="5" fill="#9A86BF"/>
+        <rect x="-8" y="-330" width="16" height="30" fill="url(#wall)"/>
+        <rect x="-14" y="-304" width="28" height="7" rx="3" fill="#F3E7F3"/>
+        <path d="M-9-330c-3-14 5-18 9-28 4 10 12 14 9 28z" fill="url(#dome)"/>
+        <path d="M0-358v-16" stroke="#E3B062" stroke-width="2.500"/><circle cx="0" cy="-378" r="4" fill="#F6D9A2"/>
+        <use href="#arch" transform="translate(0,-250) scale(.5)" fill="url(#lit)"/>
+        <use href="#arch" transform="translate(0,-170) scale(.5)" fill="url(#lit)"/>
+        <use href="#arch" transform="translate(0,-80) scale(.55)" fill="url(#lit)"/>
+        <rect x="-5" y="-322" width="10" height="14" rx="5" fill="url(#lit)"/>
+      </g>
+      <g id="sdome"><path d="M-34 0c-12-34 22-46 34-70 12 24 46 36 34 70z" fill="url(#dome)"/><path d="M0-70v-14" stroke="#E3B062" stroke-width="2.500"/><circle cx="0" cy="-87" r="3.500" fill="#F6D9A2"/></g>
+      <g id="mosque">
+        <!-- far wings -->
+        <rect x="330" y="420" width="250" height="80" fill="url(#wall2)"/><rect x="940" y="420" width="250" height="80" fill="url(#wall2)"/>
+        <use href="#sdome" transform="translate(400,420) scale(.75)"/><use href="#sdome" transform="translate(1120,420) scale(.75)"/>
+        <use href="#minaret" transform="translate(350,500) scale(.62)"/><use href="#minaret" transform="translate(1170,500) scale(.62)"/>
+        <!-- minarets -->
+        <use href="#minaret" transform="translate(520,500)"/><use href="#minaret" transform="translate(1000,500)"/>
+        <!-- main hall -->
+        <rect x="560" y="372" width="400" height="128" fill="url(#wall)"/>
+        <rect x="552" y="364" width="416" height="10" rx="3" fill="#FBF3FA"/>
+        <use href="#sdome" transform="translate(612,364)"/><use href="#sdome" transform="translate(908,364)"/>
+        <!-- drum + great dome -->
+        <rect x="686" y="286" width="148" height="80" fill="url(#wall)"/>
+        <rect x="678" y="280" width="164" height="9" rx="3" fill="#FBF3FA"/>
+        <path d="M690 280c-34-74 44-104 70-158 26 54 104 84 70 158z" fill="url(#dome)"/>
+        <path d="M715 270c-18-52 22-84 45-122" fill="none" stroke="#fff" stroke-width="5" opacity=".55" stroke-linecap="round"/>
+        <path d="M760 122v-26" stroke="#E3B062" stroke-width="3"/><circle cx="760" cy="104" r="5" fill="#F6D9A2"/>
+        <path d="M760 80a9 9 0 1 0 7 14 7 7 0 1 1-7-14z" fill="#F6D9A2"/>
+        <g fill="url(#lit)">
+          <use href="#arch" x="706" y="350"/><use href="#arch" x="733" y="350"/><use href="#arch" x="760" y="350"/><use href="#arch" x="787" y="350"/><use href="#arch" x="814" y="350"/>
+          <use href="#arch" transform="translate(588,500) scale(1.5)"/><use href="#arch" transform="translate(628,500) scale(1.5)"/><use href="#arch" transform="translate(668,500) scale(1.5)"/>
+          <use href="#arch" transform="translate(852,500) scale(1.5)"/><use href="#arch" transform="translate(892,500) scale(1.5)"/><use href="#arch" transform="translate(932,500) scale(1.5)"/>
+          <use href="#arch" x="588" y="424"/><use href="#arch" x="628" y="424"/><use href="#arch" x="668" y="424"/><use href="#arch" x="852" y="424"/><use href="#arch" x="892" y="424"/><use href="#arch" x="932" y="424"/>
+          <use href="#arch" transform="translate(370,500) scale(1.1)"/><use href="#arch" transform="translate(410,500) scale(1.1)"/><use href="#arch" transform="translate(450,500) scale(1.1)"/><use href="#arch" transform="translate(1070,500) scale(1.1)"/><use href="#arch" transform="translate(1110,500) scale(1.1)"/><use href="#arch" transform="translate(1150,500) scale(1.1)"/>
+        </g>
+        <!-- great portal -->
+        <rect x="704" y="366" width="112" height="134" fill="#FBF3FA"/>
+        <path d="M720 500v-74c0-26 22-36 40-56 18 20 40 30 40 56v74z" fill="url(#lit)"/>
+        <path d="M738 500v-62c0-16 12-24 22-36 10 12 22 20 22 36v62z" fill="#FFF8E2"/>
+      </g>
+    </defs>
+
+    <!-- stars -->
+    <g fill="#fff">
+      <circle class="tw" cx="90" cy="60" r="1.600"/><circle class="tw" cx="210" cy="130" r="1.200"/><circle class="tw" cx="330" cy="50" r="1.800"/><circle class="tw" cx="455" cy="150" r="1.200"/><circle class="tw" cx="560" cy="70" r="1.500"/><circle class="tw" cx="640" cy="170" r="1.100"/><circle class="tw" cx="880" cy="60" r="1.700"/><circle class="tw" cx="960" cy="150" r="1.200"/><circle class="tw" cx="1060" cy="90" r="1.600"/><circle class="tw" cx="1150" cy="190" r="1.200"/><circle class="tw" cx="150" cy="240" r="1.200"/><circle class="tw" cx="1010" cy="250" r="1.100"/><circle class="tw" cx="700" cy="40" r="1.300"/><circle class="tw" cx="270" cy="300" r="1"/><circle class="tw" cx="840" cy="200" r="1"/>
+    </g>
+    <!-- soft clouds -->
+    <g fill="#C9B6E6" opacity=".22" filter="url(#soft)"><ellipse cx="420" cy="250" rx="170" ry="16"/><ellipse cx="1050" cy="300" rx="190" ry="18"/><ellipse cx="640" cy="330" rx="120" ry="12"/></g>
+
+    <ellipse cx="760" cy="440" rx="520" ry="260" fill="url(#glow)"/>
+    <use href="#mosque"/>
+
+    <!-- floor + reflection -->
+    <rect x="-200" y="500" width="1600" height="220" fill="url(#floor)"/>
+    <g opacity=".22" filter="url(#soft)"><use href="#mosque" transform="translate(0,1000) scale(1,-1)"/></g>
+    <rect x="-200" y="500" width="1600" height="3" fill="#fff" opacity=".7"/>
+    <ellipse cx="760" cy="520" rx="330" ry="26" fill="#FFE3B0" opacity=".55" filter="url(#soft)"/>
+
+    <!-- pedestal -->
+    <ellipse cx="760" cy="606" rx="190" ry="26" fill="#8F7FBA" opacity=".35" filter="url(#soft)"/>
+    <path d="M590 574v18c0 14 76 25 170 25s170-11 170-25v-18z" fill="url(#marble)"/>
+    <ellipse cx="760" cy="574" rx="170" ry="24" fill="#fff"/>
+    <ellipse cx="760" cy="574" rx="150" ry="19" fill="none" stroke="#E3B062" stroke-width="1.500" opacity=".8"/>
+    <!-- rehl (stand) -->
+    <ellipse cx="760" cy="578" rx="110" ry="10" fill="#4E2810" opacity=".3" filter="url(#soft)"/>
+    <path d="M668 498l26-10 172 86-22 8z" fill="url(#wood)"/>
+    <path d="M852 498l-26-10-172 86 22 8z" fill="url(#wood)"/>
+    <path d="M852 498l-26-10-12 6 24 10z" fill="#D49A5E"/><path d="M668 498l26-10 12 6-24 10z" fill="#D49A5E"/>
+    <path d="M700 546l60-30 60 30-60 30z" fill="#5B2F14" opacity=".55"/>
+    <!-- mushaf -->
+    <path d="M760 512c-30-22-66-28-112-22l8-44c40-8 76-2 104 20 28-22 64-28 104-20l8 44c-46-6-82 0-112 22z" fill="#6B3A1A"/>
+    <path d="M760 504c-28-20-62-26-104-21l7-40c36-6 70 0 97 21z" fill="url(#page)"/>
+    <path d="M760 504c28-20 62-26 104-21l-7-40c-36-6-70 0-97 21z" fill="url(#page)"/>
+    <path d="M760 464v40" stroke="#B9773F" stroke-width="2"/>
+    <g fill="none" stroke="#B08A4A" stroke-width="1.300" opacity=".8">
+      <path d="M674 452c28-4 54 0 76 14M672 462c28-4 55 0 78 14M670 472c29-4 57 0 80 14"/>
+      <path d="M846 452c-28-4-54 0-76 14M848 462c-28-4-55 0-78 14M850 472c-29-4-57 0-80 14"/>
+    </g>
+    <path d="M663 443c36-6 70 0 97 21 27-21 61-27 97-21" fill="none" stroke="#E3B062" stroke-width="2"/>
+    <ellipse cx="760" cy="470" rx="90" ry="34" fill="#FFE9B8" opacity=".35" filter="url(#halo)"/>
+
+    <!-- lanterns -->
+    <g transform="translate(-104 0)"><g class="sway">
+      <path d="M1096 0v178" stroke="#E3B062" stroke-width="2"/>
+      <circle cx="1096" cy="250" r="70" fill="#FFD58A" opacity=".5" filter="url(#halo)"/>
+      <path d="M1096 172l16 16h-32z" fill="url(#gg)"/>
+      <path d="M1076 190h40l8 26v52l-8 22h-40l-8-22v-52z" fill="#3A2A18"/>
+      <path d="M1080 196h32l6 22v48l-6 18h-32l-6-18v-48z" fill="url(#lit)"/>
+      <path d="M1096 196v88M1074 218h44M1074 266h44" stroke="#8A5A22" stroke-width="2.500"/>
+      <path d="M1096 206c-9 10-13 20-13 34s4 24 13 34c9-10 13-20 13-34s-4-24-13-34z" fill="none" stroke="#8A5A22" stroke-width="2"/>
+      <path d="M1070 290h52l-8 12h-36z" fill="url(#gg)"/><circle cx="1096" cy="310" r="5" fill="url(#gg)"/>
+    </g></g>
+    <g transform="translate(-232 96)"><g class="sway" style="animation-delay:-2s">
+      <path d="M1160 -100v170" stroke="#E3B062" stroke-width="1.500"/>
+      <circle cx="1160" cy="112" r="40" fill="#FFD58A" opacity=".45" filter="url(#halo)"/>
+      <path d="M1160 66l10 10h-20z" fill="url(#gg)"/>
+      <path d="M1148 78h24l5 16v32l-5 13h-24l-5-13V94z" fill="#3A2A18"/>
+      <path d="M1151 82h18l4 13v30l-4 10h-18l-4-10V95z" fill="url(#lit)"/>
+      <path d="M1160 82v53M1146 96h28M1146 124h28" stroke="#8A5A22" stroke-width="1.800"/>
+      <path d="M1144 139h32l-5 8h-22z" fill="url(#gg)"/>
+    </g></g>
+    <!-- floor lantern -->
+    <g transform="translate(-55 0)">
+      <circle cx="1010" cy="560" r="60" fill="#FFD58A" opacity=".5" filter="url(#halo)"/>
+      <path d="M1010 508l14 14h-28z" fill="url(#gg)"/>
+      <path d="M994 524h32l6 18v40l-6 14h-32l-6-14v-40z" fill="#3A2A18"/>
+      <path d="M997 529h26l5 15v36l-5 11h-26l-5-11v-36z" fill="url(#lit)"/>
+      <path d="M1010 529v62M990 546h40M990 578h40" stroke="#8A5A22" stroke-width="2"/>
+      <path d="M986 596h48l-4 10h-40z" fill="url(#gg)"/>
+    </g>
+  </svg>
+
+  <nav class="top" aria-label="التنقل الرئيسي">
+    <a class="logo" href="#home" aria-label="مِشكاة، الصفحة الرئيسية">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <span><b>مِشكاة</b><small>MISHKAT</small></span>
+    </a>
+    <button class="srch" type="button" aria-label="بحث"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></button>
+    <ul class="links" id="links">
+      <li><a class="on" href="#home">الرئيسية</a></li>
+      <li><a href="#about">عن المنصة</a></li>
+      <li><a href="#centers">المراكز</a></li>
+      <li><a href="#features">الميزات</a></li>
+      <li><a href="#pricing">الأسعار</a></li>
+      <li><a href="#" data-soon>تواصل معنا</a></li>
+    </ul>
+    <div class="acts">
+      <a class="btn gold sm" href="#" data-soon><svg class="i" aria-hidden="true"><use href="#i-user"/></svg>إنشاء حساب</a>
+      <a class="btn ghost sm in" href="#" data-soon>دخول</a>
+    </div>
+    <button class="burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="links"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </nav>
+
+  <div class="hero-body">
+    <div class="hero-txt">
+      <h1>مِشكاة</h1>
+      <p class="sub">منصة متكاملة لإدارة مراكز تحفيظ القرآن الكريم</p>
+      <p class="tri">تعليم .. متابعة .. إنجاز</p>
+      <div class="cta">
+        <a class="btn gold" href="#" data-soon>ابدأ الآن</a>
+        <a class="btn ghost" href="#features"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>شاهد فيديو تعريفي</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<ul class="strip">
+  <li><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg><b>متاح على</b><span>الموقع والتطبيق</span></li>
+  <li><svg class="i" aria-hidden="true"><use href="#i-users"/></svg><b>إدارة سهلة</b><span>للمراكز والحلقات</span></li>
+  <li><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg><b>تقارير شاملة</b><span>ومفصّلة</span></li>
+  <li><svg class="i" aria-hidden="true"><use href="#i-support"/></svg><b>دعم فني</b><span>متخصص</span></li>
+  <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><b>أمان عالٍ</b><span>وحماية للبيانات</span></li>
+</ul>
+</div>
+
+<!-- two phone mockups -->
+      <div class="phones" id="app" aria-hidden="true">
+        <div class="phone">
+          <div class="scr dark">
+            <svg class="lg"><use href="#logo"/></svg>
+            <b>مِشكاة</b><small>MISHKAT</small>
+            <p>رحلتك مع القرآن.. أسهل وأقرب</p>
+            <svg class="mini" viewBox="430 90 660 540" preserveAspectRatio="xMidYMax slice"><ellipse cx="760" cy="440" rx="420" ry="230" fill="url(#glow)"/><use href="#mosque"/><rect x="0" y="500" width="1200" height="140" fill="url(#floor)"/></svg>
+            <span class="btn gold">بدء الرحلة</span>
+            <span class="btn ghost">تسجيل الدخول</span>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="scr light">
+            <div class="hello"><div class="av">أ</div><div><span>مرحبًا بك</span><b>أحمد محمد</b></div></div>
+            <div class="lvl">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#E4DDF1" stroke-width="6"/><circle cx="30" cy="30" r="24" fill="none" stroke="url(#gg)" stroke-width="6" stroke-linecap="round" stroke-dasharray="105.600 150.800" transform="rotate(-90 30 30)"/><text x="30" y="35" text-anchor="middle" font-family="Alexandria,sans-serif" font-weight="700" font-size="13" fill="#1B2550">70%</text></svg>
+              <div style="flex:1"><span>مستوى الحفظ</span><b>الجزء الخامس</b><div class="bar"><i></i></div></div>
+            </div>
+            <div class="tiles">
+              <div><svg class="i"><use href="#i-cal"/></svg>جدولي</div>
+              <div><svg class="i"><use href="#i-edit"/></svg>اختبارات</div>
+              <div><svg class="i"><use href="#i-chart"/></svg>تقاريري</div>
+            </div>
+            <h4>أحدث الإنجازات</h4>
+            <div class="ach"><svg class="i"><use href="#i-medal"/></svg><div><b>إتمام سورة الكهف</b><span>مبروك لك!</span></div></div>
+            <div class="tab">
+              <div class="on"><svg class="i"><use href="#i-home"/></svg>الرئيسية</div>
+              <div><svg class="i"><use href="#i-users"/></svg>حلقاتي</div>
+              <div><svg class="i"><use href="#i-bell"/></svg>الإشعارات</div>
+              <div><svg class="i"><use href="#i-menu"/></svg>المزيد</div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<main>
+<div class="board">
+
+<section id="centers" class="b-dash rv">
+  <div class="panel">
+    <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-crown"/></svg>لوحة إدارة المركز</h2>
+      <div class="laptop" aria-hidden="true">
+        <div class="lid">
+          <div class="dash">
+            <div class="side">
+              <div class="lg"><svg><use href="#logo"/></svg>مِشكاة</div>
+              <ul>
+                <li class="on"><svg class="i"><use href="#i-home"/></svg>لوحة التحكم</li>
+                <li><svg class="i"><use href="#i-user"/></svg>الطلاب</li>
+                <li><svg class="i"><use href="#i-users"/></svg>المعلمون</li>
+                <li><svg class="i"><use href="#i-book"/></svg>الحلقات</li>
+                <li><svg class="i"><use href="#i-chart"/></svg>التقارير</li>
+                <li><svg class="i"><use href="#i-shield"/></svg>الإعدادات</li>
+              </ul>
+            </div>
+            <div class="main">
+              <div class="kpis">
+                <div class="kpi"><b>12</b>المعلمون</div>
+                <div class="kpi"><b>8</b>الحلقات</div>
+                <div class="kpi"><b>120</b>إجمالي الطلاب</div>
+              </div>
+              <div class="two">
+                <div class="box">
+                  <h5>أحدث الأنشطة</h5>
+                  <ul class="acts-l">
+                    <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="#E4DDF1" stroke-width="8"/><circle cx="30" cy="30" r="22" fill="none" stroke="#2E6BA8" stroke-width="8" stroke-dasharray="127.200 138.200" transform="rotate(-90 30 30)"/><text x="30" y="34.500" text-anchor="middle" font-family="Alexandria,sans-serif" font-weight="700" font-size="12" fill="#1B2550">92%</text></svg>
+                    <li>إكمال حفظ جزء عمّ</li>
+                    <li>حضور حلقة الفجر</li>
+                    <li>تقييم الطالب محمد</li>
+                  </ul>
+                </div>
+                <div class="box">
+                  <h5>إحصائيات الحفظ</h5>
+                  <svg viewBox="0 0 220 96">
+                    <g stroke="#E9E4F3" stroke-width="1"><path d="M0 20h220M0 45h220M0 70h220M0 95h220"/></g>
+                    <path d="M4 78l28-14 28 10 28-26 28 12 28-24 28 6 44-28" fill="none" stroke="#2E6BA8" stroke-width="2.200" stroke-linejoin="round" stroke-linecap="round"/>
+                    <path d="M4 88l28-8 28-16 28 14 28-20 28 8 28-22 44-6" fill="none" stroke="#C48B38" stroke-width="2.200" stroke-linejoin="round" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="box">
+                <h5>تقدّم الحلقات</h5>
+                <div class="rows">
+                  <span>حلقة الفجر</span><div class="bar"><i style="width:86%"></i></div><b>86%</b>
+                  <span>حلقة النور</span><div class="bar"><i style="width:72%"></i></div><b>72%</b>
+                  <span>حلقة الفرقان</span><div class="bar"><i style="width:64%"></i></div><b>64%</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="base"></div>
+      </div>
+  </div>
+</section>
+
+<section id="features" class="b-feat rv">
+  <div class="panel">
+    <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg>مميزات المنصة</h2>
+    <ul class="feats">
+      <li><svg class="i" aria-hidden="true"><use href="#i-book"/></svg><h3>إدارة شاملة<br>لمناهج الحفظ</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-target"/></svg><h3>متابعة دقيقة<br>لمستوى الحفظ</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-mic"/></svg><h3>التسميع الصوتي<br>والتقييم الذكي</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-video"/></svg><h3>دعم التعليم<br>عن بُعد</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-cert"/></svg><h3>شهادات إنجاز<br>رقمية</h3></li>
+      <li><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg><h3>تقارير وإحصائيات<br>متقدمة</h3></li>
+    </ul>
+  </div>
+</section>
+
+<section id="about" class="b-sys rv">
+  <div class="panel">
+    <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-hex"/></svg>مخطط النظام</h2>
+    <div class="tree">
+      <div class="root">المنصة الرئيسية<small>(مِشكاة)</small></div>
+      <div class="stem"></div>
+      <ul class="kids">
+        <li><div class="kid"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg><b>واجهة الطالب</b><span>(التطبيق)</span></div></li>
+        <li><div class="kid"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg><b>واجهة المعلم</b><span>(التطبيق)</span></div></li>
+        <li><div class="kid"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg><b>لوحة إدارة المركز</b><span>(الموقع)</span></div></li>
+        <li><div class="kid"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg><b>واجهة ولي الأمر</b><span>(التطبيق / الموقع)</span></div></li>
+      </ul>
+    </div>
+    <div class="cloud"><svg class="i" aria-hidden="true"><use href="#i-cloud"/></svg>بنية سحابية آمنة وموثوقة</div>
+  </div>
+</section>
+
+<section id="identity" class="b-id rv">
+  <div class="ident">
+    <h2>الهوية البصرية</h2>
+    <svg class="lg" aria-hidden="true"><use href="#logo"/></svg>
+    <b>مِشكاة</b><small>MISHKAT</small>
+    <div class="sw" aria-label="ألوان الهوية"><i style="background:#1B2550"></i><i style="background:#E3B062"></i><i style="background:#FFF6E6"></i><i style="background:#6F6AA8"></i></div>
+    <p>نورٌ في كل بيت</p>
+  </div>
+</section>
+
+</div>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing" class="rv">
+  <div class="panel">
+    <h2 class="pill"><svg class="i" aria-hidden="true"><use href="#i-tag"/></svg>الباقات</h2>
+    <p class="intro">السعر حسب حجم المركز وعدد الطلاب. اختر الأقرب لك واطلب عرضك.</p>
+    <ul class="plans">
+      <li class="plan">
+        <h3>حلقة</h3><p class="for">لمعلم أو حلقة واحدة</p>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>متابعة الحفظ والتسميع</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>حضور وغياب</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>تطبيق الطالب وولي الأمر</span></li>
+        </ul>
+        <a class="btn navy" href="#" data-soon>اطلب عرض سعر</a>
+      </li>
+      <li class="plan hot">
+        <span class="tag">الأكثر طلبًا</span>
+        <h3>مركز</h3><p class="for">لمركز تحفيظ بعدة حلقات</p>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>كل ما في باقة حلقة</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>لوحة إدارة المركز والتقارير</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>شهادات إنجاز رقمية</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>صلاحيات للمشرفين والمعلمين</span></li>
+        </ul>
+        <a class="btn gold" href="#" data-soon>اطلب عرض سعر</a>
+      </li>
+      <li class="plan">
+        <h3>مؤسسة</h3><p class="for">لجمعية أو عدة مراكز</p>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>كل ما في باقة مركز</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>إدارة عدة فروع من حساب واحد</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>تعليم عن بُعد وتسميع صوتي</span></li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>هوية المركز وشعاره على المنصة</span></li>
+        </ul>
+        <a class="btn navy" href="#" data-soon>اطلب عرض سعر</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  <a class="logo" href="#home" aria-label="مِشكاة">
+    <svg aria-hidden="true"><use href="#logo"/></svg>
+    <span><b>مِشكاة</b><small>MISHKAT</small></span>
+  </a>
+  <span>نورٌ في كل بيت</span>
+  <span>© مِشكاة</span>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var C = window.MISHKAT || {};
+  /* أزرار بدون وظيفة لحد مرحلة النظام */
+  document.querySelectorAll('[data-soon]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); });
+  });
+
+  if (C.heroImage){
+    var im = new Image(), hero = document.getElementById('home');
+    im.onload = function(){ hero.style.setProperty('--img', 'url("' + C.heroImage + '")'); hero.classList.add('has-img'); };
+    im.src = C.heroImage;
+  }
+
+  var burger = document.getElementById('burger'), links = document.getElementById('links');
+  burger.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  links.addEventListener('click', function(e){
+    if (e.target.tagName === 'A'){ links.classList.remove('open'); burger.setAttribute('aria-expanded', false); }
+  });
+
+  var items = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.08});
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
