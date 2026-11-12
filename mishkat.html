@@ -13,12 +13,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap">
 <script>
-/* بيانات التواصل: عدّلها من هون */
+/* إعدادات الصفحة */
 window.MISHKAT = {
   /* صورة الخلفية ثلاثية الأبعاد (المسجد والمصحف): حط مسارها هون، مثلاً 'assets/mishkat-hero.jpg'. فاضي = الرسم المؤقت */
-  heroImage: '',
-  whatsapp: '962782365424',
-  message: 'السلام عليكم، حابب أعرف أكثر عن منصة مِشكاة لمركزنا'
+  heroImage: ''
 };
 </script>
 <style>
@@ -252,10 +250,6 @@ section{margin-top:84px}
 .plan .btn{margin-top:auto}
 
 /* ---------- contact + footer ---------- */
-.contact{border-radius:30px;padding:48px 28px;text-align:center;color:#fff;position:relative;overflow:hidden;
-  background:radial-gradient(60% 120% at 50% 120%,rgba(227,176,98,.4),transparent 70%),linear-gradient(180deg,var(--navy-l),var(--navy-d));box-shadow:var(--shadow)}
-.contact h2{margin:0 0 8px;font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,38px);line-height:1.6;text-wrap:balance}
-.contact p{margin:0 auto 24px;max-width:520px;color:rgba(255,255,255,.85)}
 footer{margin:56px 0 0;padding:28px 0 40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;color:var(--muted);font-size:15px;border-top:1px solid var(--line)}
 footer .logo{color:var(--navy)}
 footer .logo svg{width:46px;height:46px}
@@ -390,7 +384,6 @@ footer .logo small{font-size:9px}
     <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.500" width="10" height="19" rx="2.500"/><path d="M11 18.500h2"/></symbol>
     <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.500 12.500V4.500h8l9 9-8 8z"/><circle cx="8" cy="9" r="1.500" fill="#1B2550"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.500v15l12-7.500z" fill="currentColor"/></symbol>
-    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.300-4.200A8 8 0 1 1 8.300 19z"/><path d="M9 8.500c0 3.500 3 6.500 6.500 6.500l1-1.800-2-1-.8.900c-1-.4-2.400-1.800-2.800-2.800l.9-.8-1-2z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500"/><path d="M16 16l4.500 4.500"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.500 20.500c.8-4 3.800-6 7.500-6s6.700 2 7.500 6z"/></symbol>
   </defs>
@@ -547,11 +540,11 @@ footer .logo small{font-size:9px}
       <li><a href="#centers">المراكز</a></li>
       <li><a href="#features">الميزات</a></li>
       <li><a href="#pricing">الأسعار</a></li>
-      <li><a href="#contact">تواصل معنا</a></li>
+      <li><a href="#" data-soon>تواصل معنا</a></li>
     </ul>
     <div class="acts">
-      <a class="btn gold sm" href="#contact"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg>إنشاء حساب</a>
-      <a class="btn ghost sm in" href="#contact">دخول</a>
+      <a class="btn gold sm" href="#" data-soon><svg class="i" aria-hidden="true"><use href="#i-user"/></svg>إنشاء حساب</a>
+      <a class="btn ghost sm in" href="#" data-soon>دخول</a>
     </div>
     <button class="burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="links"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg></button>
   </nav>
@@ -562,7 +555,7 @@ footer .logo small{font-size:9px}
       <p class="sub">منصة متكاملة لإدارة مراكز تحفيظ القرآن الكريم</p>
       <p class="tri">تعليم .. متابعة .. إنجاز</p>
       <div class="cta">
-        <a class="btn gold" href="#contact">ابدأ الآن</a>
+        <a class="btn gold" href="#" data-soon>ابدأ الآن</a>
         <a class="btn ghost" href="#features"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>شاهد فيديو تعريفي</a>
       </div>
     </div>
@@ -732,7 +725,7 @@ footer .logo small{font-size:9px}
           <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>حضور وغياب</span></li>
           <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>تطبيق الطالب وولي الأمر</span></li>
         </ul>
-        <a class="btn navy" href="#contact" data-plan="حلقة">اطلب عرض سعر</a>
+        <a class="btn navy" href="#" data-soon>اطلب عرض سعر</a>
       </li>
       <li class="plan hot">
         <span class="tag">الأكثر طلبًا</span>
@@ -743,7 +736,7 @@ footer .logo small{font-size:9px}
           <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>شهادات إنجاز رقمية</span></li>
           <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>صلاحيات للمشرفين والمعلمين</span></li>
         </ul>
-        <a class="btn gold" href="#contact" data-plan="مركز">اطلب عرض سعر</a>
+        <a class="btn gold" href="#" data-soon>اطلب عرض سعر</a>
       </li>
       <li class="plan">
         <h3>مؤسسة</h3><p class="for">لجمعية أو عدة مراكز</p>
@@ -753,20 +746,12 @@ footer .logo small{font-size:9px}
           <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>تعليم عن بُعد وتسميع صوتي</span></li>
           <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>هوية المركز وشعاره على المنصة</span></li>
         </ul>
-        <a class="btn navy" href="#contact" data-plan="مؤسسة">اطلب عرض سعر</a>
+        <a class="btn navy" href="#" data-soon>اطلب عرض سعر</a>
       </li>
     </ul>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="rv">
-  <div class="contact">
-    <h2>جاهز تنوّر مركزك بمِشكاة؟</h2>
-    <p>احكِ معنا على واتساب، ونجهّز لك نسخة تجريبية باسم مركزك.</p>
-    <a class="btn gold" id="wa" href="#" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-wa"/></svg>تواصل معنا على واتساب</a>
-  </div>
-</section>
 
 </main>
 
@@ -784,13 +769,9 @@ footer .logo small{font-size:9px}
 <script>
 (function(){
   var C = window.MISHKAT || {};
-  var wa = document.getElementById('wa');
-  function link(extra){
-    return 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent((C.message || '') + (extra ? ' (باقة ' + extra + ')' : ''));
-  }
-  wa.href = link();
-  document.querySelectorAll('[data-plan]').forEach(function(a){
-    a.href = link(a.getAttribute('data-plan')); a.target = '_blank'; a.rel = 'noopener';
+  /* أزرار بدون وظيفة لحد مرحلة النظام */
+  document.querySelectorAll('[data-soon]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); });
   });
 
   if (C.heroImage){
